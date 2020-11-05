@@ -19,7 +19,7 @@ class App extends React.Component {
 
   render() {
     return (
-      <div className="app center">
+      <div className="center">
         <img src={logo} alt="ClubSCLogo" className="center centered" id="jumbo-logo"/> 
         <div className="center" id="search">
           <SearchBar/>
