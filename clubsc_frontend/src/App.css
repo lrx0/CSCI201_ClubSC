@@ -50,6 +50,15 @@ body {
    padding-bottom: 4rem; 
  }
 
+ .login-button-padding {
+   padding-top: 4rem; 
+   padding-right: 10rem; 
+ }
+
+ .go-button {
+   padding-left: 5rem; 
+ }
+
  .center {
    text-align: center; 
    display: block; 
@@ -57,10 +66,6 @@ body {
    align-items: center; 
    margin: auto;  
  }
-
- .search-form {
-  border-radius: 30px 0 0 30px;
-}
  
  #login-club {
    color: white;
