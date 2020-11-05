@@ -1,38 +1,86 @@
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
+body {
+  --gray: #EFEFEF;
+  --yellow: #E49D18;
+  --yellow-2: #F1C231;
+  --red: #C8142A;
+  --red-2: #E06666;
+ }
+ 
+ #jumbo-logo {
+   width: 30rem;
+   height: auto;
+ }
+ 
+ /* enable absolute positioning */
+ .inner-addon {
+     position: relative;
+ }
+ 
+ /* style icon */
+ .inner-addon .glyphicon {
+   position: absolute;
+   padding: 10px;
+   pointer-events: none;
+ }
+ 
+ /* align icon */
+ .left-addon .glyphicon  { left:  0px;}
+ .right-addon .glyphicon { right: 0px;}
+ 
+ /* add padding  */
+ .left-addon input  { padding-left:  30px; }
+ 
+ .form-control {
+   border-width: 0px;
+   background-color: var(--gray);
+ }
+ 
+ .btn-primary:hover {
+   border-color: var(--red-2);
+   background-color: var(--red-2);
+ }
+ 
+ .btn-primary {
+   border-color: var(--red);
+   background-color: var(--red);
+ }
+ 
+ .centered {
+   padding: 8rem 0;
+ }
+ 
+ #login-club {
+   color: white;
+   text-align: center;
+   padding: 2rem 0;
+   border: solid var(--yellow-2) 5px;
+   border-radius: 100%;
+   background: var(--red);
+   width: 100px;
+   height: 100px;
+   -webkit-transition: background-color 0.25s ease-in-out;
+ }
+ 
+ #login-club:hover {
+   text-decoration: none;
+   background-color: var(--red-2);
+   -webkit-transition: background-color 0.25s ease-in-out;
+ }
+ 
+ #login-stu {
+   color: white;
+   text-align: center;
+   padding: 1.4rem 0;
+   border: solid var(--red) 5px;
+   border-radius: 100%;
+   background-color: var(--yellow);
+   width: 100px;
+   height: 100px;
+   -webkit-transition: background-color 0.25s ease-in-out;
+ }
+ 
+ #login-stu:hover {
+   text-decoration: none;
+   background-color: var(--yellow-2);
+   -webkit-transition: background-color 0.25s ease-in-out;
+ }

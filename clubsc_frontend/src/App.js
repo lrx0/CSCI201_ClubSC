@@ -1,11 +1,12 @@
 import React from "react"; 
 import './App.css';
+import logo from "./artifacts/logo.svg"; 
 
 class App extends React.Component {
   render() {
     return (
       <div className="app">
-        <img src={require("./clubSCLogo.png")} alt="website logo"/> 
+        <img src={logo} alt="logo" id="jumbo-logo"/> 
       </div>
     ); 
   }
