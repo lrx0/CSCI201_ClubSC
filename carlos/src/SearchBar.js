@@ -1,10 +1,10 @@
 import './master.css';
 import React from 'react';
 
-const SearchBar = () => {
+const SearchBar = (props) => {
   return (
     <div className="d-flex flex-row justify-content-center align-items-center">
-      <div className=" col-6 input-group">
+      <div className={`col-${props.size} input-group`}>
           <span className="input-group-append bg-white border-left-0">
             <span className="input-group-text bg-transparent">
               <svg width="1em" height="1em" viewBox="0 0 16 16" className="bi bi-search" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
