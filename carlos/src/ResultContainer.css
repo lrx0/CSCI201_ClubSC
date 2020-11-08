@@ -1,0 +1,5 @@
+.results {
+  width: 600px;
+  height: 480px;
+  overflow-y: auto;
+}

@@ -1,0 +1,79 @@
+body {
+ --gray: #EFEFEF;
+ --yellow: #E49D18;
+ --yellow-2: #F1C231;
+ --red: #C8142A;
+ --red-2: #E06666;
+ --red-3: #F1B0B4;
+}
+
+.form-control {
+  border-width: 0px;
+  background-color: var(--gray);
+}
+
+.btn-primary:hover {
+  border-color: var(--red-2);
+  background-color: var(--red-2);
+}
+
+.btn-primary {
+  border-color: var(--red);
+  background-color: var(--red);
+}
+
+.centered {
+  padding: 8rem 0;
+}
+
+.results {
+  width: 600px;
+  height: 480px;
+  overflow-y: auto;
+}
+
+#jumbo-logo {
+  width: 30rem;
+  height: auto;
+}
+
+#std-logo {
+  width: 15rem;
+  height: auto;
+}
+
+#login-club {
+  color: white;
+  text-align: center;
+  padding: 2rem 0;
+  border: solid var(--yellow-2) 5px;
+  border-radius: 100%;
+  background: var(--red);
+  width: 100px;
+  height: 100px;
+  -webkit-transition: background-color 0.25s ease-in-out;
+}
+
+#login-club:hover {
+  text-decoration: none;
+  background-color: var(--red-2);
+  -webkit-transition: background-color 0.25s ease-in-out;
+}
+
+#login-stu {
+  color: white;
+  text-align: center;
+  padding: 1.4rem 0;
+  border: solid var(--red) 5px;
+  border-radius: 100%;
+  background-color: var(--yellow);
+  width: 100px;
+  height: 100px;
+  -webkit-transition: background-color 0.25s ease-in-out;
+}
+
+#login-stu:hover {
+  text-decoration: none;
+  background-color: var(--yellow-2);
+  -webkit-transition: background-color 0.25s ease-in-out;
+}
