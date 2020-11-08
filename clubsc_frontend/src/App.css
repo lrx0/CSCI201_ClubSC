@@ -1,104 +1,115 @@
 body {
-  --gray: #EFEFEF;
-  --yellow: #E49D18;
-  --yellow-2: #F1C231;
-  --red: #C8142A;
-  --red-2: #E06666;
- }
- 
- #jumbo-logo {
-   width: 40rem;
-   height: auto;
- }
- 
- /* enable absolute positioning */
- .inner-addon {
-     position: relative;
- }
- 
- /* style icon */
- .inner-addon .glyphicon {
-   position: absolute;
-   padding: 10px;
-   pointer-events: none;
- }
- 
- /* align icon */
- .left-addon .glyphicon  { left:  0px;}
- .right-addon .glyphicon { right: 0px;}
- 
- /* add padding  */
- .left-addon input  { padding-left:  30px; }
- 
- .form-control {
-   border-width: 0px;
-   background-color: var(--gray);
- }
- 
- .btn-primary:hover {
-   border-color: var(--red-2);
-   background-color: var(--red-2);
- }
- 
- .btn-primary {
-   border-color: var(--red);
-   background-color: var(--red);
- }
- 
- .centered {
-   padding-top: 12rem;
-   padding-bottom: 4rem; 
- }
+  --gray: #f0f0f0;
+  --logo-yellow: #fab728;
+  --light-yellow: #ffebad;
+  --logo-red: #b50d1e;
+  --light-red: #ffd1d1;
+}
 
- .login-button-padding {
-   padding-top: 4rem; 
-   padding-right: 10rem; 
- }
+#jumbo-logo {
+  width: 40rem;
+  height: auto;
+}
 
- .go-button {
-   padding-left: 5rem; 
- }
+/* enable absolute positioning */
+.inner-addon {
+  position: relative;
+}
 
- .center {
-   text-align: center; 
-   display: block; 
-   justify-content: center; 
-   align-items: center; 
-   margin: auto;  
- }
- 
- #login-club {
-   color: white;
-   text-align: center;
-   padding: 2rem 0;
-   border: solid var(--yellow-2) 5px;
-   border-radius: 100%;
-   background: var(--red);
-   width: 100px;
-   height: 100px;
-   -webkit-transition: background-color 0.25s ease-in-out;
- }
- 
- #login-club:hover {
-   text-decoration: none;
-   background-color: var(--red-2);
-   -webkit-transition: background-color 0.25s ease-in-out;
- }
- 
- #login-stu {
-   color: white;
-   text-align: center;
-   padding: 1.4rem 0;
-   border: solid var(--red) 5px;
-   border-radius: 100%;
-   background-color: var(--yellow);
-   width: 100px;
-   height: 100px;
-   -webkit-transition: background-color 0.25s ease-in-out;
- }
- 
- #login-stu:hover {
-   text-decoration: none;
-   background-color: var(--yellow-2);
-   -webkit-transition: background-color 0.25s ease-in-out;
- }
+/* style icon */
+.inner-addon .glyphicon {
+  position: absolute;
+  padding: 10px;
+  pointer-events: none;
+}
+
+/* align icon */
+.left-addon .glyphicon {
+  left: 0px;
+}
+.right-addon .glyphicon {
+  right: 0px;
+}
+
+/* add padding  */
+.left-addon input {
+  padding-left: 30px;
+}
+
+.form-control {
+  border-width: 0px;
+  background-color: var(--gray);
+}
+
+.btn-primary:hover {
+  border-color: var(--red-2);
+  background-color: var(--red-2);
+}
+
+.btn-primary {
+  border-color: var(--red);
+  background-color: var(--red);
+}
+
+.centered {
+  padding-top: 12rem;
+  padding-bottom: 4rem;
+}
+
+.student-login-padding {
+  padding-top: 4rem;
+  /*padding-right: 10rem; */
+}
+
+.club-login-padding {
+  padding-top: 4rem;
+  padding-right: 10rem;
+}
+
+.go-button {
+  padding-left: 5rem;
+}
+
+.center {
+  text-align: center;
+  display: block;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+}
+
+#login-club {
+  color: white;
+  text-align: center;
+  padding: 2rem 0;
+  border: solid var(--yellow-2) 5px;
+  border-radius: 100%;
+  background: var(--red);
+  width: 100px;
+  height: 100px;
+  -webkit-transition: background-color 0.25s ease-in-out;
+}
+
+#login-club:hover {
+  text-decoration: none;
+  background-color: var(--red-2);
+  -webkit-transition: background-color 0.25s ease-in-out;
+}
+
+#login-stu {
+  color: white;
+  text-align: center;
+  padding: 1.4rem 0;
+  border: solid var(--red) 5px;
+  border-radius: 100%;
+  background-color: var(--yellow);
+  width: 100px;
+  height: 100px;
+  -webkit-transition: background-color 0.25s ease-in-out;
+}
+
+#login-stu:hover {
+  text-decoration: none;
+  background-color: var(--yellow-2);
+  -webkit-transition: background-color 0.25s ease-in-out;
+}
