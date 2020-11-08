@@ -47,7 +47,7 @@ const ResultsPage = () => {
 };
 
 //uncomment to render landing page
-ReactDOM.render(<App />, document.querySelector('#root'))
+// ReactDOM.render(<App />, document.querySelector('#root'))
 
 //uncomment to render results page
-// ReactDOM.render(<ResultsPage />, document.querySelector('#root'))
+ReactDOM.render(<ResultsPage />, document.querySelector('#root'))
