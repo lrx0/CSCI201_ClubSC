@@ -3,21 +3,14 @@ import React from 'react';
 
 const SearchBar = (props) => {
   return (
-    <div className="d-flex flex-row justify-content-center align-items-center">
-      <div className={`col-${props.size} input-group`}>
-          <span className="input-group-append bg-white border-left-0">
-            <span className="input-group-text bg-transparent">
-              <svg width="1em" height="1em" viewBox="0 0 16 16" className="bi bi-search" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                <path fillRule="evenodd" d="M10.442 10.442a1 1 0 0 1 1.415 0l3.85 3.85a1 1 0 0 1-1.414 1.415l-3.85-3.85a1 1 0 0 1 0-1.415z"/>
-                <path fillRule="evenodd" d="M6.5 12a5.5 5.5 0 1 0 0-11 5.5 5.5 0 0 0 0 11zM13 6.5a6.5 6.5 0 1 1-13 0 6.5 6.5 0 0 1 13 0z"/>
-              </svg>
-            </span>
-          </span>
-        <input className="form-control border-right-0" placeholder="Search Clubs" />
-      </div>
-      <div className="px-2">
-        <button type="button" className="btn btn-primary">Go!</button>
-      </div>
+    <div class="search-bar d-flex flex-row align-items-center" spellcheck="false flex-fill">
+      <span class="pl-3 pr-2">
+        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-search" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+          <path fill-rule="evenodd" d="M10.442 10.442a1 1 0 0 1 1.415 0l3.85 3.85a1 1 0 0 1-1.414 1.415l-3.85-3.85a1 1 0 0 1 0-1.415z"/>
+          <path fill-rule="evenodd" d="M6.5 12a5.5 5.5 0 1 0 0-11 5.5 5.5 0 0 0 0 11zM13 6.5a6.5 6.5 0 1 1-13 0 6.5 6.5 0 0 1 13 0z"/>
+        </svg>
+      </span>
+      <input type="text" />
     </div>
   );
 };
