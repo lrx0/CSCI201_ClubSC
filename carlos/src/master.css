@@ -43,18 +43,22 @@ div.search-bar > input {
 
 .btn-primary {
   background-color: #ff7c7c;
+  border-color: #ff7c7c;
 }
 
 .btn-primary:hover {
   background-color: #d14e4e;
+  border-color: #d14e4e;
 }
 
 .btn-secondary {
   background-color: #ffc700;
+  border-color: #ffc700;
 }
 
 .btn-secondary:hover {
   background-color: #ffb800;
+  border-color: #ffb800;
 }
 
 .btn-outline-secondary {

@@ -45,7 +45,7 @@ const populateNavRight = (user) => {
 
 const Navbar = (props) => {
   return (
-    <nav class="navbar sticky-top navbar-expand navbar-light bg-light">
+    <nav className="navbar sticky-top navbar-expand navbar-light bg-light">
       {populateNavLeft(props.search)}
       {populateNavRight(props.user)}
     </nav>
