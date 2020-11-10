@@ -17,7 +17,7 @@ const populateNavLeft = (search) => {
           <img src="clubsc_mini.png" width="72px" height="40px" alt="" />
         </a>
         <form className="form-inline d-flex">
-          <SearchBar />
+          <SearchBar width='50vw' button={true}/>
         </form>
       </div>
     );
@@ -45,7 +45,7 @@ const populateNavRight = (user) => {
 
 const Navbar = (props) => {
   return (
-    <nav class="navbar navbar-expand navbar-light bg-light">
+    <nav class="navbar sticky-top navbar-expand navbar-light bg-light">
       {populateNavLeft(props.search)}
       {populateNavRight(props.user)}
     </nav>

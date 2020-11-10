@@ -1,3 +1,12 @@
+.container {
+  padding-bottom: 80px;
+}
+
+.page-contents {
+  position: relative;
+  min-height: 100vh
+}
+
 footer {
   position: absolute;
   bottom: 0;
@@ -32,8 +41,6 @@ div.search-bar > input {
   font-size: 20px;
 }
 
-.bg-light
-
 .btn-primary {
   background-color: #ff7c7c;
 }
@@ -42,13 +49,13 @@ div.search-bar > input {
   background-color: #d14e4e;
 }
 
-/* .btn-secondary {
+.btn-secondary {
   background-color: #ffc700;
 }
 
 .btn-secondary:hover {
   background-color: #ffb800;
-} */
+}
 
 .btn-outline-secondary {
   color: #ffc700;
@@ -84,7 +91,6 @@ div.search-bar > input {
   }
 }
 
-form-control:focus {
-  border-color: #ff80ff !important;
-  box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.075) inset, 0px 0px 8px rgba(255, 100, 255, 0.5) !important;
+#search-btn {
+  border-radius: 50%;
 }

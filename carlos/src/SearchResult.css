@@ -1,12 +1,12 @@
 .result {
-  height: 80px;
+  margin-top: 0;
+  margin-bottom: 40px;
   border-radius: 25px;
   -webkit-transition: background-color 0.25s ease-in-out;
 }
 
 .result:hover {
-  background-color: var(--red-3);
-  -webkit-transition: background-color 0.25s ease-in-out;
+  cursor: pointer;
 }
 
 .fake-icon {
@@ -18,6 +18,17 @@
   display: inline-block;
 }
 
+.club-icon {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%
+}
+
 .club-name {
-  font-size: 30px;
+  font-size: 25px;
+}
+
+.club-description {
+  font-size: 15px;
+  font-weight: 100;
 }

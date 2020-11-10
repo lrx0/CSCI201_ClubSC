@@ -7,7 +7,7 @@ import Navbar from './Navbar';
 
 const ContainerView = (props) => {
   return (
-    <React.Fragment>
+    <div className="page-contents">
       <Navbar search={props.search} user={props.user} />
         {props.children}
       <footer>
@@ -21,7 +21,7 @@ const ContainerView = (props) => {
           </div>
         </div>
       </footer>
-    </React.Fragment  >
+    </div>
   );
 };
 
