@@ -1,4 +1,5 @@
 import './master.css';
+import './SearchBar.css';
 import React from 'react';
 
 const populateSearchBar = (btn) => {

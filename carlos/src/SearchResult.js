@@ -23,7 +23,7 @@ import React from 'react';
 const SearchResult = (props) => {
   return (
     <div className="col-12 col-md-5 col-xl-3">
-      <div className="card mb-5 mb-xl-4 mr-xl-1">
+      <div className="card mb-3 mb-xl-4 mx-1 mx-xl-1">
         <img src={props.img} class="card-img-top" alt="..." />
         <div className="card-body">
           <h5 className="card-title">{props.title}</h5>

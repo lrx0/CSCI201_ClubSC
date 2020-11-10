@@ -11,7 +11,7 @@ const ResultContainer = (props) => {
       cols.push(props.children[j])
     }
     retval.push(
-      <div className="row d-flex flex-row justify-content-xl-start justify-content-between" key={i}>
+      <div className="row d-flex flex-row justify-content-xl-start justify-content-sm-center justify-content-between" key={i}>
         {cols}
       </div>
     );

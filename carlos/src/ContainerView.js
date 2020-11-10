@@ -1,9 +1,8 @@
+import './ContainerView.css';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Faker from 'faker';
 import Navbar from './Navbar';
-
-// <Navbar user={{ name: "Charles Maxwell", img: Faker.image.avatar() }}/>
 
 const ContainerView = (props) => {
   return (
