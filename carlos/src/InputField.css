@@ -1,0 +1,17 @@
+.input-field {
+  height: 50px;
+  background: transparent;
+  box-sizing: border-box;
+  border: 1px solid #b0b0b0;
+  border-radius: 1000px;
+  overflow: hidden;
+}
+
+.input-field > input {
+  outline: none;
+  border: none;
+  box-sizing: border-box;
+  flex-grow: 2;
+  background: transparent;
+  font-size: 20px;
+}

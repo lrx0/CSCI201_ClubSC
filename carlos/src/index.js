@@ -5,8 +5,9 @@ import ContainerView from './ContainerView';
 import SearchBar from './SearchBar';
 import SearchResult from './SearchResult';
 import ResultContainer from './ResultContainer';
+import InputField from './InputField';
 
-// <Navbar user={{ name: Faker.name.findName(), img: Faker.image.avatar() }}/>
+// user={{ name: Faker.name.findName(), img: Faker.image.avatar() }}
 
 const App = () => {
   return (
@@ -93,8 +94,36 @@ const ResultsPage = () => {
   );
 };
 
+const Login = () => {
+  return (
+    <ContainerView logoOnly={true}>
+    <div className="container">
+    <div className="row d-flex flex-row justify-content-center align-items-center" style={{height:'60vh'}}>
+        <div className="col-10 col-md-8 col-lg-5">
+          <h1 className="my-3" style={{ textAlign:'center' }}>Log In</h1>
+          <form>
+            <InputField type="email" title="Email" />
+            <InputField type="password" title="Password" />
+            <div className="d-flex flex-row justify-content-between align-items-center">
+              <a className="mr-auto ml-1" href="#">
+                <span className="hide-mobile">Don't have an account?</span>
+                <span className="show-mobile">Sign Up</span>
+              </a>
+              <button className="btn btn-primary ml-auto mr-1" type="Submit">Submit</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    </ContainerView>
+  );
+}
+
 //uncomment to render landing page
 // ReactDOM.render(<App />, document.querySelector('#root'))
 
 //uncomment to render results page
-ReactDOM.render(<ResultsPage />, document.querySelector('#root'))
+// ReactDOM.render(<ResultsPage />, document.querySelector('#root'))
+
+// uncomment to render login page
+ReactDOM.render(<Login />, document.querySelector('#root'))

@@ -2,6 +2,10 @@
   padding-bottom: 80px;
 }
 
+.hide {
+  display: none;
+}
+
 .btn-primary {
   background-color: #ff7c7c;
   border-color: #ff7c7c;
@@ -40,4 +44,16 @@
 .btn-outline-primary:hover {
   background-color: #ff7c7c;
   border-color: #ff7c7c;
+}
+
+@media (min-width:460px) {
+  .show-mobile {
+    display: none;
+  }
+}
+
+@media (max-width:460px) {
+  .hide-mobile {
+    display: none;
+  }
 }

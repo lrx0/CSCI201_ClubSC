@@ -38,15 +38,3 @@ footer > div {
   height: 35px;
   border-radius: 50%;
 }
-
-@media (min-width:460px) {
-  .show-mobile {
-    display: none;
-  }
-}
-
-@media (max-width:460px) {
-  .hide-mobile {
-    display: none;
-  }
-}
