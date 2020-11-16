@@ -13,14 +13,10 @@ class ClubScApplicationTests {
 	
 	@Autowired
 	private StudentController controller;
-	private ClubController controller1;
-	private AnnouncementController controller2;
 
 	@Test
 	void contextLoads() {
 		assertThat(controller).isNotNull();
-		assertThat(controller1).isNotNull();
-		assertThat(controller2).isNotNull();
 	}
 
 }
