@@ -6,7 +6,7 @@ import java.util.*;
 @Entity
 public class Club {
 	@Id
-	@Column(nullable = false)
+	@Column(nullable = false, unique = true)
 	private Long club_id;
 	@Column(nullable = false, unique = true)
 	private String username;

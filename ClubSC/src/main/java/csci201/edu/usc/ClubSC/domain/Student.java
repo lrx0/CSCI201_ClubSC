@@ -7,7 +7,7 @@ import javax.persistence.*;
 @Entity
 public class Student {
 	@Id
-	@Column(nullable = false)
+	@Column(nullable = false, unique = true)
 	private Long student_id;
 	@Column(nullable = false, unique = true)
 	private String username;
