@@ -7,15 +7,10 @@ import javax.persistence.*;
 @Entity
 public class Student {
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(nullable = false, updatable = false)
-	private long student_id;
+	@Column(nullable = false)
+	private Long student_id;
 	@Column(nullable = false, unique = true)
 	private String username;
-	@Column(nullable = false, unique = true)
-	private String email;
-	@Column(nullable = false)
-	private String password;
 	
 	@ManyToMany
 	@JoinTable(name = "Follower", joinColumns = @JoinColumn(name = "student_id"), 
@@ -26,11 +21,10 @@ public class Student {
 		
 	}
 	
-	public Student(String username, String email, String password) {
+	public Student(Long student_id, String username) {
 		super();
+		this.student_id = student_id;
 		this.username = username;
-		this.email = email;
-		this.password = password;
 	}
 	
 	public Set<Club> getFollowedClubs() {
@@ -39,7 +33,7 @@ public class Student {
 	public void setFollowedClubs(Set<Club> followedClubs) {
 		this.followedClubs = followedClubs;
 	}
-	public long getStudent_id() {
+	public Long getStudent_id() {
 		return student_id;
 	}
 	public void setStudent_id(long student_id) {
@@ -50,17 +44,5 @@ public class Student {
 	}
 	public void setUsername(String username) {
 		this.username = username;
-	}
-	public String getEmail() {
-		return email;
-	}
-	public void setEmail(String email) {
-		this.email = email;
-	}
-	public String getPassword() {
-		return password;
-	}
-	public void setPassword(String password) {
-		this.password = password;
 	}
 }

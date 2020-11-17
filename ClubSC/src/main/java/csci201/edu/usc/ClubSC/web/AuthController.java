@@ -29,6 +29,10 @@ public class AuthController {
 	@Autowired
 	RoleRepository roleRepository;
 	@Autowired
+	ClubRepository clubRepository;
+	@Autowired
+	StudentRepository studentRepository;
+	@Autowired
 	PasswordEncoder encoder;
 	@Autowired
 	JwtUtils jwtUtils;
@@ -75,6 +79,7 @@ public class AuthController {
 
 		Set<String> strRoles = signUpRequest.getRole();
 		Set<Role> roles = new HashSet<>();
+		int test = 0;
 
 		if (strRoles == null) {
 			Role userRole = roleRepository.findByName(ERole.ROLE_STUDENT)
@@ -93,18 +98,25 @@ public class AuthController {
 					Role modRole = roleRepository.findByName(ERole.ROLE_CLUB)
 							.orElseThrow(() -> new RuntimeException("Error: Role is not found."));
 					roles.add(modRole);
+					user.isStudent = false;
 
 					break;
 				default:
 					Role userRole = roleRepository.findByName(ERole.ROLE_STUDENT)
 							.orElseThrow(() -> new RuntimeException("Error: Role is not found."));
 					roles.add(userRole);
+					user.isStudent = true;
 				}
 			});
 		}
 
 		user.setRoles(roles);
 		userRepository.save(user);
+		if(!user.isStudent) {
+			clubRepository.save(new Club(user.getId(), user.getUsername()));
+		} else {
+			studentRepository.save(new Student(user.getId(), user.getUsername()));
+		}
 
 		return ResponseEntity.ok(new Message("User registered successfully!"));
 	}

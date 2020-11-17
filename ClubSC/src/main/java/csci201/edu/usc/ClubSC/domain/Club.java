@@ -6,15 +6,10 @@ import java.util.*;
 @Entity
 public class Club {
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(nullable = false, updatable = false)
-	private long club_id;
+	@Column(nullable = false)
+	private Long club_id;
 	@Column(nullable = false, unique = true)
 	private String username;
-	@Column(nullable = false, unique = true)
-	private String email;
-	@Column(nullable = false)
-	private String password;
 	private String description;
 	
 	@OneToMany(cascade = CascadeType.ALL, mappedBy="club")
@@ -27,12 +22,11 @@ public class Club {
 		
 	}
 	
-	public Club(String username, String email, String password, String description) {
+	public Club(Long club_id, String username) {
 		super();
+		this.club_id = club_id;
 		this.username = username;
-		this.email = email;
-		this.password = password;
-		this.description = description;
+		this.description = "";
 	}
 	
 	public List<Announcement> getAnnouncements() {
@@ -47,7 +41,7 @@ public class Club {
 	public void setFollowerStudents(Set<Student> followerStudents) {
 		this.followerStudents = followerStudents;
 	}
-	public long getClub_id() {
+	public Long getClub_id() {
 		return club_id;
 	}
 	public void setClub_id(long club_id) {
@@ -58,18 +52,6 @@ public class Club {
 	}
 	public void setUsername(String username) {
 		this.username = username;
-	}
-	public String getEmail() {
-		return email;
-	}
-	public void setEmail(String email) {
-		this.email = email;
-	}
-	public String getPassword() {
-		return password;
-	}
-	public void setPassword(String password) {
-		this.password = password;
 	}
 	public String getDescription() {
 		return description;

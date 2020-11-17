@@ -23,9 +23,6 @@ public class ClubScApplication {
     CommandLineRunner runner(){
       return args -> {
         // Demo data
-    	  repository.save(new Student("lucasmhuang", "lmhuang@usc.edu", "password"));
-    	  repository.save(new Student("ryanli", "ryanli@usc.edu", "password"));
-    	  repository.save(new Student("carloslao", "clao@usc.edu", "password")); 
       };
     }
 }
