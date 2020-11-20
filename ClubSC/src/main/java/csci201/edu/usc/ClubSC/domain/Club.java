@@ -10,7 +10,6 @@ public class Club {
 	private Long club_id;
 	@Column(nullable = false, unique = true)
 	private String username;
-	private String description;
 	
 	@OneToMany(cascade = CascadeType.ALL, mappedBy="club")
 	private List<Announcement> announcements;
@@ -26,7 +25,6 @@ public class Club {
 		super();
 		this.club_id = club_id;
 		this.username = username;
-		this.description = "";
 	}
 	
 	public List<Announcement> getAnnouncements() {
@@ -52,11 +50,5 @@ public class Club {
 	}
 	public void setUsername(String username) {
 		this.username = username;
-	}
-	public String getDescription() {
-		return description;
-	}
-	public void setDescription(String description) {
-		this.description = description;
 	}
 }

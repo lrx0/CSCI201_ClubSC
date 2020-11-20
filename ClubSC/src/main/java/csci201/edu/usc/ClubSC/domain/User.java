@@ -28,6 +28,7 @@ public class User {
 	@NotBlank
 	@Size(max = 120)
 	private String password;
+	private String description;
 	public boolean isStudent;
 
 	@ManyToMany(fetch = FetchType.LAZY)
@@ -39,10 +40,11 @@ public class User {
 	public User() {
 	}
 
-	public User(String username, String email, String password) {
+	public User(String username, String email, String password, String description) {
 		this.username = username;
 		this.email = email;
 		this.password = password;
+		this.description = description;
 	}
 	
 	public Long getId() {
@@ -74,5 +76,11 @@ public class User {
 	}
 	public void setRoles(Set<Role> roles) {
 		this.roles = roles;
+	}
+	public String getDescription() {
+		return description;
+	}
+	public void setDescription(String description) {
+		this.description = description;
 	}
 }
