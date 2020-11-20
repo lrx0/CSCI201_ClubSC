@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<classpath>
-	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
-	<classpathentry kind="src" path="ClubSC/.mvn/wrapper"/>
-	<classpathentry kind="src" path="ClubSC/src/main/java"/>
-	<classpathentry kind="src" path="ClubSC/src/test/java"/>
-	<classpathentry kind="lib" path="ClubSC/spring-security-config-5.4.1.jar"/>
-	<classpathentry kind="output" path="ClubSC/target/classes"/>
-</classpath>
