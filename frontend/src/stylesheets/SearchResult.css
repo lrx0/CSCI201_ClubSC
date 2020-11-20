@@ -1,13 +1,7 @@
 .card {
   box-sizing: border-box;
-  min-height: 30vh;
+  min-height: 20vh;
   /* max-height: 400px; */
-}
-
-.card-img-top {
-    width: 100%;
-    max-height: 15vw;
-    object-fit: contain;
 }
 
 .fake-icon {
@@ -34,9 +28,6 @@
   margin-right: 0;
   font-size: 15px;
   font-weight: 100;
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
 }
 
 @media (max-width: 768px) {
@@ -49,16 +40,13 @@
     overflow: visible;
     white-space: normal;
   }
-  .card-img-top {
-    display: none;
-  }
   .card-title {
     font-size: 30px;
     text-align: center;
   }
 }
 
-@media (min-width: 1200px) {
+@media (min-width: 768px) {
   .card-body {
     display: flex;
     flex-direction: column;

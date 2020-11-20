@@ -1,9 +1,6 @@
 import React, { useState } from 'react';
-// import Faker from 'faker';
 import ContainerView from '../components/ContainerView';
 import SearchBar from '../components/SearchBar';
-
-// user={{ name: Faker.name.findName(), img: Faker.image.avatar() }}
 
 const LandingPage = () => {
   const [term, setTerm] = useState('');
@@ -12,7 +9,7 @@ const LandingPage = () => {
     console.log(`Searching for ${term}...`)
 
     event.preventDefault();
-    window.history.pushState({}, '', '/clubsc/search');
+    window.history.pushState({}, '', '/ClubSC/search');
 
     const navEvent = new PopStateEvent('popstate');
     window.dispatchEvent(navEvent);

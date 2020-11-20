@@ -11,17 +11,19 @@ const Navbar = (props) => {
     console.log(`Searching for ${term}...`)
 
     event.preventDefault();
-    window.history.pushState({}, '', '/clubsc/search');
+    window.history.pushState({}, '', '/ClubSC/search');
 
     const navEvent = new PopStateEvent('popstate');
     window.dispatchEvent(navEvent);
   }
 
   const populateNavLeft = (search, logoOnly) => {
+    const logoLink = props.user ? '/userdash' : '/';
+
     if (logoOnly) {
       return (
         <div className="navbar-nav">
-          <Link className="navbar-brand ml-2" href="/">
+          <Link className="navbar-brand ml-2" href={logoLink}>
             <img src="clubsc_mini.png" width="72px" height="40px" alt="" />
           </Link>
         </div>
@@ -37,7 +39,7 @@ const Navbar = (props) => {
     } else{
       return(
         <div className="navbar-nav">
-          <Link className="navbar-brand ml-2" href="/">
+          <Link className="navbar-brand ml-2" href={logoLink}>
             <img src="clubsc_mini.png" width="72px" height="40px" alt="" />
           </Link>
           <form className="form-inline d-flex" onSubmit={queryResults}>
@@ -51,7 +53,7 @@ const Navbar = (props) => {
   const populateNavRight = (user, logoOnly) => {
     if(logoOnly) { return; }
 
-    if (!user['name']){
+    if (!user){
       return(
         <form className="form-inline ml-auto">
           <Link className="btn btn-outline-primary" href="/login">
@@ -68,8 +70,7 @@ const Navbar = (props) => {
       return (
         <div className="navbar-nav ml-auto">
           <Link className="nav-item nav-link align-items-center" href="/user">
-            <span className="hide-mobile" style={ {lineHeight:'40px' }} >{user['name']} </span>
-            <img alt="avatar" src={user['img']} className="avatar ml-2" />
+            {user}
           </Link>
         </div>
       );

@@ -14,7 +14,7 @@ const Route = ({ path, children }) => {
     };
   }, []);
 
-  return currentPath === `/clubsc${path}` ? children : null;
+  return currentPath === `/ClubSC${path}` ? children : null;
 };
 
 export default Route;

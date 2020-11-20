@@ -17,7 +17,7 @@ const ContainerView = (props) => {
       <footer className = {`${props.logoOnly ? 'hide' : ''}`}>
         <div className = "navbar navbar-light bg-light flex-column responsive-footer justify-content-center">
           <div>
-            <p className = "mb-0">©clubSC 2020</p>
+            <p className = "mb-0">© ClubSC 2020</p>
           </div>
           <div className = "navbar-nav d-flex flex-row justify-content-around">
             <Link className = "nav-item nav-link mr-1" href="/">Privacy</Link>
@@ -31,10 +31,7 @@ const ContainerView = (props) => {
 
 ContainerView.defaultProps = {
   search: false,
-  user: {
-    name: '',
-    img: ''
-  },
+  user: '',
   logoOnly: false
 };
 

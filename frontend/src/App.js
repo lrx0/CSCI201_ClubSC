@@ -3,7 +3,8 @@ import LandingPage from './pages/LandingPage';
 import LoginPage from './pages/LoginPage';
 import SignupPage from './pages/SignupPage';
 import ResultsPage from './pages/ResultsPage';
-import UserHomepage from './pages/UserHomepage';
+import UserDashboard from './pages/UserDashboard';
+import UserPage from './pages/UserPage';
 import Route from './components/Route';
 
 const App = () => {
@@ -21,8 +22,11 @@ const App = () => {
       <Route path="/signup">
         <SignupPage />
       </Route>
-      <Route path="/userhome">
-        <UserHomepage />
+      <Route path="/userdash">
+        <UserDashboard />
+      </Route>
+      <Route path="/user">
+        <UserPage />
       </Route>
     </div>
   );
