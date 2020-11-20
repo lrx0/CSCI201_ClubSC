@@ -27,6 +27,10 @@ public class Club {
 		this.username = username;
 	}
 	
+	public void postAnnouncement(String text)
+	{
+		announcements.add(new Announcement(club_id, text, new Timestamp(System.currentTimeMillis()), username));
+	}
 	public List<Announcement> getAnnouncements() {
 		return announcements;
 	}
