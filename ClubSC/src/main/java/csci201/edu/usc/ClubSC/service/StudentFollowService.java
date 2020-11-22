@@ -1,6 +1,5 @@
 package csci201.edu.usc.ClubSC.service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +10,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.data.domain.Pageable;
 import csci201.edu.usc.ClubSC.domain.Club;
 import csci201.edu.usc.ClubSC.domain.ClubSearchRepository;
+import csci201.edu.usc.ClubSC.domain.Follow;
+import csci201.edu.usc.ClubSC.domain.FollowRepository;
 
 @Service
 public class StudentFollowService

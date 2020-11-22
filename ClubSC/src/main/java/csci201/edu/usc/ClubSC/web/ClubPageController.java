@@ -21,7 +21,7 @@ public class ClubPageController
     @PostMapping("/clubpage")
     public ClubPage getClubPage( @Valid @RequestBody ClubPageRequest ClubPageRequest)
     {
-        ClubPage list = service.getAllClubs(ClubPageRequest.getKey());
+        ClubPage cp = service.getClubPage(ClubPageRequest.getKey());
         
         return cp;
     }

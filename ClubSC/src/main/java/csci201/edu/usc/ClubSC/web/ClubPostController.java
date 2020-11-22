@@ -13,7 +13,7 @@ import csci201.edu.usc.ClubSC.service.ClubPostService;
 @RestController
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RequestMapping("/app")
-public class StudentFollowController
+public class ClubPostController
 {
     @Autowired
     ClubPostService service;
