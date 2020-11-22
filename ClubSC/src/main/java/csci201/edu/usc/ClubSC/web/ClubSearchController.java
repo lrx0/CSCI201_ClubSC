@@ -19,10 +19,10 @@ public class ClubSearchController
     ClubSearchService service;
  
     @PostMapping("/clubsearch")
-    public ResponseEntity<List<Club>> getAllClubs( @Valid @RequestBody ClubSearchRequest ClubSearchRequest)
+    public List<Club> getAllClubs( @Valid @RequestBody ClubSearchRequest ClubSearchRequest)
     {
         List<Club> list = service.getAllClubs(ClubSearchRequest.getKey());
- 
-        return new ResponseEntity<List<Club>>(list, new HttpHeaders(), HttpStatus.OK); 
+        
+        return list;
     }
 }

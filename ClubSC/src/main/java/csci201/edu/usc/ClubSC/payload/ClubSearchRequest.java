@@ -5,7 +5,7 @@ import javax.validation.constraints.Size;
 
 public class ClubSearchRequest {
 	@NotBlank
-	@Size(min = 3, max = 20)
+	@Size(min = 1, max = 20)
     private String key;
 	
 	public String getKey() {
