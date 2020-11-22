@@ -8,6 +8,7 @@ public class Announcement {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private long postid;
+	@Column(nullable = false, unique = false)
 	private long clubid;
 	@Column(nullable = false, unique = false)
 	private String body;
