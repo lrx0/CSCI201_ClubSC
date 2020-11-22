@@ -22,7 +22,7 @@ public class Announcement {
 
 
 	public Announcement(long clubid, String body, Timestamp timestamp2) {
-		this.post_id = timestamp2.getTime();
+		this.postid = timestamp2.getTime();
 		this.clubid = clubid;
 		this.body = body;
 		this.timestamp = timestamp2;
