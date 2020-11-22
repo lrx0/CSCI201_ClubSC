@@ -8,8 +8,11 @@ public class Announcement {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private long post_id;
+	@Column(nullable = false, unique = false)
 	private long clubid;
+	@Column(nullable = false, unique = false)
 	private String body;
+	@Column(nullable = false, unique = false)
 	private Timestamp timestamp;
 	
 	
@@ -18,6 +21,7 @@ public class Announcement {
 	}
 
 	public Announcement(long club_id, String body, Timestamp timestamp2) {
+		this.post_id= timestamp2.getTime();
 		this.clubid = club_id;
 		this.body = body;
 		this.timestamp = timestamp2;
