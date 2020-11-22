@@ -6,19 +6,19 @@ import javax.validation.constraints.Size;
 public class StudentFollowRequest {
 	@NotBlank
 	@Size(min = 1, max = 20)
-    private String name;
-    private String club;
+    private Long name;
+    private Long club;
 	
-	public String getName() {
+	public Long getName() {
         return name;
     }
-	public void setName(String name) {
+	public void setName(Long name) {
         this.name = name;
     }
-    public String getClub() {
+    public Long getClub() {
         return club;
     }
-	public void setClub(String club) {
+	public void setClub(Long club) {
         this.club = club;
     }
 }
