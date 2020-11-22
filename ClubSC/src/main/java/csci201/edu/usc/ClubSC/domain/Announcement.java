@@ -9,7 +9,9 @@ public class Announcement {
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private long postid;
 	private long clubid;
+	@Column(nullable = false, unique = false)
 	private String body;
+	@Column(nullable = false, unique = false)
 	private Timestamp timestamp;
 	
 	
