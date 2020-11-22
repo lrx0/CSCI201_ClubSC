@@ -4,7 +4,16 @@ import SearchResult from '../components/SearchResult';
 import ResultContainer from '../components/ResultContainer';
 import ContainerView from '../components/ContainerView';
 
-const ResultsPage = () => {
+const ResultsPage = ({ results }) => {
+
+  const renderedResults = results.map((result) => {
+    return (
+      <SearchResult
+        
+      />
+    );
+  });
+
   return (
     <ContainerView search={true}>
       <div className="container">

@@ -1,21 +1,37 @@
 import  '../stylesheets/master.css';
 import  '../stylesheets/ContainerView.css'
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+import ResultsPage from '../pages/ResultsPage';
+import Route from './Route';
 import SearchBar from './SearchBar';
 import Link from './Link';
 
 const Navbar = (props) => {
   const [term, setTerm] = useState('');
+  const [results, setResults] = useState([]);
+
+  useEffect(() => {
+    const search = async () => {
+      const data = await axios.post("localhost:8080/app/clubsearch", {}, {
+        params: {
+          key: term
+        }
+      });
+
+      console.log(data);
+    }
+
+    search();
+  }, [term]);
 
   const queryResults = (event) => {
-    console.log(`Searching for ${term}...`)
-
     event.preventDefault();
-    window.history.pushState({}, '', '/ClubSC/search');
+    window.history.pushState({}, '', '/search');
 
     const navEvent = new PopStateEvent('popstate');
     window.dispatchEvent(navEvent);
-  }
+  };
 
   const populateNavLeft = (search, logoOnly) => {
     const logoLink = props.user ? '/userdash' : '/';
@@ -44,6 +60,9 @@ const Navbar = (props) => {
           </Link>
           <form className="form-inline d-flex" onSubmit={queryResults}>
             <SearchBar width='50vw' button={true} term={term} onTermChange={setTerm}/>
+            <Route path="/search">
+              <ResultsPage results={results}/>
+            </Route>
           </form>
         </div>
       );

@@ -10,8 +10,11 @@ public class Club {
 	private Long clubid;
 	@Column(nullable = false, unique = true)
 	private String username;
+
 	@Column(nullable = false, unique = false)
 	private String description;
+
+
 	
 	@ManyToMany(mappedBy = "followedClubs")
 	private Set<Student> followerStudents;
@@ -25,6 +28,7 @@ public class Club {
 		this.clubid = club_id;
 		this.username = username;
 	}
+
 
 	public Set<Student> getFollowerStudents() {
 		return followerStudents;

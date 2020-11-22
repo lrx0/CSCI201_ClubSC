@@ -1,19 +1,35 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+import ResultsPage from './ResultsPage';
+import Route from '../components/Route';
 import ContainerView from '../components/ContainerView';
 import SearchBar from '../components/SearchBar';
 
 const LandingPage = () => {
   const [term, setTerm] = useState('');
+  const [results, setResults] = useState([]);
+
+  useEffect(() => {
+    const search = async () => {
+      const data = await axios.post("localhost:8080/app/clubsearch", {}, {
+        params: {
+          key: term
+        }
+      });
+
+      console.log(data);
+    }
+
+    search();
+  }, [term]);
 
   const queryResults = (event) => {
-    console.log(`Searching for ${term}...`)
-
     event.preventDefault();
-    window.history.pushState({}, '', '/ClubSC/search');
+    window.history.pushState({}, '', '/search');
 
     const navEvent = new PopStateEvent('popstate');
     window.dispatchEvent(navEvent);
-  }
+  };
 
   return (
     <ContainerView>
@@ -25,6 +41,9 @@ const LandingPage = () => {
           <div className="row d-flex flex-column align-items-center">
             <div className="col-8">
               <SearchBar term={term} onTermChange={setTerm}/>
+              <Route path="/search">
+                <ResultsPage results={results}/>
+              </Route>
             </div>
             <button className="btn btn-light mt-5" type="submit">Search Clubs</button>
           </div>
