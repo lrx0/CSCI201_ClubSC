@@ -8,7 +8,7 @@ public class Announcement {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private long post_id;
-	private long club_id;
+	private long clubid;
 	private String body;
 	private Timestamp timestamp;
 	
@@ -18,7 +18,7 @@ public class Announcement {
 	}
 
 	public Announcement(long club_id, String body, Timestamp timestamp2) {
-		this.club_id = club_id;
+		this.clubid = club_id;
 		this.body = body;
 		this.timestamp = timestamp2;
 	}
@@ -29,10 +29,10 @@ public class Announcement {
 		this.post_id = post_id;
 	}
 	public long getClub_id() {
-		return club_id;
+		return clubid;
 	}
 	public void setClub_id(long club_id) {
-		this.club_id = club_id;
+		this.clubid = club_id;
 	}
 	public String getBody() {
 		return body;

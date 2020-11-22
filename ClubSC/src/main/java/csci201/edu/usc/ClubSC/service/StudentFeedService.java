@@ -31,13 +31,13 @@ public class StudentFeedService
 		long timeback = 600000000;
 		List <Announcement> fetchedAnnouncements = new ArrayList<Announcement> ();
         //iterate through all
-        List<Follow> followedClubs = fr.findByStudent_id(studentid);
+        List<Follow> followedClubs = fr.findByStudentid(studentid);
 		for(Follow f : followedClubs)
 		{
-            Long c = f.club_id;
-			if (annrepo.findByclub_id(c) == null)
+            Long c = f.clubid;
+			if (annrepo.findByclubid(c) == null)
 				return null;
-			fetchedAnnouncements.addAll(annrepo.findByclub_id(c));
+			fetchedAnnouncements.addAll(annrepo.findByclubid(c));
 		}
 		Collections.sort(fetchedAnnouncements, new Comparator<Announcement>() {
 			public int compare(Announcement a1, Announcement a2) {

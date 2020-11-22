@@ -29,9 +29,9 @@ public class ClubPageService
  
         ClubPage Result = new ClubPage();
         Result.club_id = key;
-        Club c = repository.findByClub_id(key);
+        Club c = repository.findByClubid(key);
         Result.club_name = c.getUsername();
-        Result.announcements = ar.findByclub_id(key);
+        Result.announcements = ar.findByclubid(key);
         Result.club_desc = c.getDesc();
         return Result;
     }

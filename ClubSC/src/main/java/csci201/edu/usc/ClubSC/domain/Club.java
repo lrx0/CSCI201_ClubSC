@@ -7,7 +7,7 @@ import java.util.*;
 public class Club {
 	@Id
 	@Column(nullable = false, unique = true)
-	private Long club_id;
+	private Long clubid;
 	@Column(nullable = false, unique = true)
 	private String username;
 	@Column(nullable = false, unique = false)
@@ -22,7 +22,7 @@ public class Club {
 	
 	public Club(Long club_id, String username) {
 		super();
-		this.club_id = club_id;
+		this.clubid = club_id;
 		this.username = username;
 	}
 
@@ -33,10 +33,10 @@ public class Club {
 		this.followerStudents = followerStudents;
 	}
 	public Long getClub_id() {
-		return club_id;
+		return clubid;
 	}
 	public void setClub_id(long club_id) {
-		this.club_id = club_id;
+		this.clubid = club_id;
 	}
 	public String getUsername() {
 		return username;

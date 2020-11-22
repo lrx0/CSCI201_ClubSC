@@ -13,5 +13,5 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface FollowRepository extends PagingAndSortingRepository<Follow, Long> {
     //get followed club id list from student
-	List <Follow> findByStudent_id(Long student_id);
+	List <Follow> findByStudentid(Long studentid);
 }

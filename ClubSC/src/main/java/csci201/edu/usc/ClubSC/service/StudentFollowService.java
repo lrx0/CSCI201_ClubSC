@@ -26,8 +26,5 @@ public class StudentFollowService
         fr.save(f);
     }
 
-	public void followClub(String name, String club) {
-		// TODO Auto-generated method stub
-		
-	}
+	
 }

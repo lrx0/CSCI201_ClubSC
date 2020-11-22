@@ -10,13 +10,13 @@ public class Follow {
 	@Column(nullable = false, unique = true)
 	private Long follow_id;
 	@Column(nullable = false, unique = false)
-	public Long student_id;
+	public Long studentid;
 	@Column(nullable = false, unique = false)
-	public Long club_id;
+	public Long clubid;
     public Follow(Long s, Long c)
     {
     	follow_id = System.currentTimeMillis();
-        student_id = s;
-        club_id = c;
+        studentid = s;
+        clubid = c;
     }
 }
