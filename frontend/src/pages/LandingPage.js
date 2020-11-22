@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import ResultsPage from './ResultsPage';
 import Route from '../components/Route';
@@ -9,17 +9,27 @@ const LandingPage = () => {
   const [term, setTerm] = useState('');
   const [results, setResults] = useState([]);
 
-  const queryResults = async (event) => {
-    const {data} = await axios.get("https://en.wikipedia.org/w/api.php", {});
+  useEffect(() => {
+    const search = async () => {
+      const data = await axios.post("localhost:8080/app/clubsearch", {}, {
+        params: {
+          key: term
+        }
+      });
 
-    setResults(data)
+      console.log(data);
+    }
 
+    search();
+  }, [term]);
+
+  const queryResults = (event) => {
     event.preventDefault();
     window.history.pushState({}, '', '/search');
 
     const navEvent = new PopStateEvent('popstate');
     window.dispatchEvent(navEvent);
-  }
+  };
 
   return (
     <ContainerView>
