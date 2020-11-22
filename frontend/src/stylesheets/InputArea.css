@@ -1,6 +1,6 @@
 .input-area {
   height: 100px;
-  background: transparent;
+  background: #ffffff;
   box-sizing: border-box;
   border: 1px solid #b0b0b0;
   border-radius: 20px;
@@ -15,6 +15,6 @@
   border: none;
   box-sizing: border-box;
   flex-grow: 2;
-  background: transparent;
+  background: #ffffff;
   font-size: 15px;
 }

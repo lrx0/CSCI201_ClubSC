@@ -9,7 +9,7 @@ const LandingPage = () => {
     console.log(`Searching for ${term}...`)
 
     event.preventDefault();
-    window.history.pushState({}, '', '/ClubSC/search');
+    window.history.pushState({}, '', '/search');
 
     const navEvent = new PopStateEvent('popstate');
     window.dispatchEvent(navEvent);
