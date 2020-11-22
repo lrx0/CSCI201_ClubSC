@@ -9,6 +9,8 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.data.domain.Pageable;
+
+import csci201.edu.usc.ClubSC.domain.AnnouncementRepository;
 import csci201.edu.usc.ClubSC.domain.Club;
 import csci201.edu.usc.ClubSC.domain.ClubSearchRepository;
 
@@ -16,12 +18,14 @@ import csci201.edu.usc.ClubSC.domain.ClubSearchRepository;
 public class StudentFollowService
 {
     @Autowired
-    FollowRepository fr;
-     
-    public void followClub(Long name, Long id)
+    AnnouncementRepository ar;
+    @Autowired
+    ClubRepository cr; 
+    public void post(Long clubid, String body)
     {
-        //add student, club pair to follow database
-        Follow f = new Follow(name,id);
-        fr.save(f);
+		ts = Timestamp(System.currentTimeMillis());
+		myclub = cr.findByClub_id(clubid);
+        Announcement a = new Announcement(clubid, body, ts, myclub);
+        ar.save(a);
     }
 }

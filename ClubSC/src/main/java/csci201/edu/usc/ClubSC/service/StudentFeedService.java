@@ -22,15 +22,15 @@ public class StudentFeedService
     @Autowired
     FollowRepository fr;
      
-    public List <Announcement> fetchFeed(String studentName)
+    public List <Announcement> fetchFeed(Long studentid)
 	{
 		long timeback = 600000000;
 		List <Announcement> fetchedAnnouncements = new ArrayList<Announcement> ();
         //iterate through all
-        List<Follow> followedClubs = fr.getFollow(studentName);
+        List<Follow> followedClubs = fr.getFollow(studentid);
 		for(Follow f : followedClubs)
 		{
-            String c = f.club_id;
+            Long c = f.club_id;
 			if (annrepo.findByclub_id(c) == null)
 				return null;
 			fetchedAnnouncements.addAll(annrepo.findByclub_id(c));

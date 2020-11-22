@@ -5,9 +5,9 @@ import java.util.*;
 
 @Entity
 public class Follow {
-    public String student_id;
-    public String club_id;
-    public Follow(String s, String c)
+    public Long student_id;
+    public Long club_id;
+    public Follow(Long s, Long c)
     {
         student_id = s;
         club_id = c;

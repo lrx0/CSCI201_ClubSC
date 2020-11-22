@@ -8,7 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import csci201.edu.usc.ClubSC.domain.*;
 import csci201.edu.usc.ClubSC.payload.*;
-import csci201.edu.usc.ClubSC.service.ClubSearchService;
+import csci201.edu.usc.ClubSC.service.StudentFollowService;
 
 @RestController
 @CrossOrigin(origins = "*", maxAge = 3600)

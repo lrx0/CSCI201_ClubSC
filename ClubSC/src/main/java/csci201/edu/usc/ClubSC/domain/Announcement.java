@@ -19,7 +19,7 @@ public class Announcement {
 	public Announcement() {
 		
 	}
-	
+
 	public Announcement(long club_id, String body, Timestamp timestamp2, Club club) {
 		this.club_id = club_id;
 		this.body = body;

@@ -10,18 +10,25 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.data.domain.Pageable;
 import csci201.edu.usc.ClubSC.domain.Club;
+import csci201.edu.usc.ClubSC.domain.ClubPage;
 import csci201.edu.usc.ClubSC.domain.ClubSearchRepository;
+import sun.tools.serialver.Res;
 
 @Service
-public class StudentFollowService
+public class ClubPageService
 {
     @Autowired
-    FollowRepository fr;
+    ClubRepository repository;
      
-    public void followClub(Long name, Long id)
+    public ClubPage getClubPage(Long key)
     {
-        //add student, club pair to follow database
-        Follow f = new Follow(name,id);
-        fr.save(f);
+ 
+        ClubPage Result = new ClubPage();
+        Result.club_id = key;
+        Club c = findByClub_id(key);
+        Result.club_name = c.getUsername();
+        Result.announcements = c.getAnnouncements();
+        Result.club_desc = c.getDesc();
+        return Result;
     }
 }

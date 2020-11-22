@@ -10,7 +10,8 @@ public class Club {
 	private Long club_id;
 	@Column(nullable = false, unique = true)
 	private String username;
-	
+	@Column(nullable = false, unique = false)
+	private String description;
 	@OneToMany(cascade = CascadeType.ALL, mappedBy="club")
 	private List<Announcement> announcements;
 	
@@ -50,5 +51,13 @@ public class Club {
 	}
 	public void setUsername(String username) {
 		this.username = username;
+	}
+	public String getDesc()
+	{
+		return description;
+	}
+	public void setDesc(String d)
+	{
+		this.description = d;
 	}
 }
