@@ -13,6 +13,10 @@ public class Follow {
 	public Long studentid;
 	@Column(nullable = false, unique = false)
 	public Long clubid;
+	public Follow() {
+	follow_id = System.currentTimeMillis();
+    studentid = (long) 0;
+    clubid = (long) 0;}
     public Follow(Long s, Long c)
     {
     	follow_id = System.currentTimeMillis();
