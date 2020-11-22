@@ -27,8 +27,7 @@ public class ClubPostService
     public void post(Long clubid, String body)
     {
 		Timestamp ts = new Timestamp(System.currentTimeMillis());
-		Club myclub = cr.findByClub_id(clubid);
-        Announcement a = new Announcement(clubid, body, ts, myclub);
+        Announcement a = new Announcement(clubid, body, ts);
         ar.save(a);
     }
 }

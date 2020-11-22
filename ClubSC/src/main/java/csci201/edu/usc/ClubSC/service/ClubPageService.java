@@ -9,6 +9,8 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.data.domain.Pageable;
+
+import csci201.edu.usc.ClubSC.domain.AnnouncementRepository;
 import csci201.edu.usc.ClubSC.domain.Club;
 import csci201.edu.usc.ClubSC.domain.ClubPage;
 import csci201.edu.usc.ClubSC.domain.ClubRepository;
@@ -19,6 +21,8 @@ public class ClubPageService
 {
     @Autowired
     ClubRepository repository;
+    @Autowired
+    AnnouncementRepository ar;
      
     public ClubPage getClubPage(Long key)
     {
@@ -27,7 +31,7 @@ public class ClubPageService
         Result.club_id = key;
         Club c = repository.findByClub_id(key);
         Result.club_name = c.getUsername();
-        Result.announcements = c.getAnnouncements();
+        Result.announcements = ar.findByclub_id(key);
         Result.club_desc = c.getDesc();
         return Result;
     }
