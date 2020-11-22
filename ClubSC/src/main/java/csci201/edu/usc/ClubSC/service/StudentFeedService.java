@@ -32,12 +32,11 @@ public class StudentFeedService
 		List <Announcement> fetchedAnnouncements = new ArrayList<Announcement> ();
         //iterate through all
         List<Follow> followedClubs = fr.findByStudentid(studentid);
-		for(Follow f : followedClubs)
+        for(Follow f : followedClubs) 
 		{
             Long c = f.clubid;
-			if (annrepo.findByclubid(c) == null)
-				return null;
 			fetchedAnnouncements.addAll(annrepo.findByclubid(c));
+			System.out.println(annrepo.findByclubid(c).size());
 		}
 		Collections.sort(fetchedAnnouncements, new Comparator<Announcement>() {
 			public int compare(Announcement a1, Announcement a2) {
@@ -47,7 +46,7 @@ public class StudentFeedService
 		List <Announcement> timechecked = new ArrayList<Announcement> ();
 		int tc = 0;
 		long currtime = System.currentTimeMillis();
-		while (currtime - fetchedAnnouncements.get(tc).getTimestamp().getTime() < timeback)
+		while (tc<fetchedAnnouncements.size() &&currtime - fetchedAnnouncements.get(tc).getTimestamp().getTime() < timeback)
 		{
 			timechecked.add(fetchedAnnouncements.get(tc));
 			tc++;

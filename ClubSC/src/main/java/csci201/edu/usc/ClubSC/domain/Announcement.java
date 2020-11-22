@@ -7,7 +7,7 @@ import javax.persistence.*;
 public class Announcement {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	private long post_id;
+	private long postid;
 	private long clubid;
 	private String body;
 	private Timestamp timestamp;
@@ -17,22 +17,24 @@ public class Announcement {
 		
 	}
 
-	public Announcement(long club_id, String body, Timestamp timestamp2) {
-		this.clubid = club_id;
+	public Announcement(long clubid, String body, Timestamp timestamp2) {
+		this.postid = 101;
+		//this.post_id = timestamp2.getTime();
+		this.clubid = clubid;
 		this.body = body;
 		this.timestamp = timestamp2;
 	}
-	public long getPost_id() {
-		return post_id;
+	public long getPostid() {
+		return postid;
 	}
-	public void setPost_id(long post_id) {
-		this.post_id = post_id;
+	public void setPostid(long post_id) {
+		this.postid = post_id;
 	}
-	public long getClub_id() {
+	public long getClubid() {
 		return clubid;
 	}
-	public void setClub_id(long club_id) {
-		this.clubid = club_id;
+	public void setClubid(long clubid) {
+		this.clubid = clubid;
 	}
 	public String getBody() {
 		return body;

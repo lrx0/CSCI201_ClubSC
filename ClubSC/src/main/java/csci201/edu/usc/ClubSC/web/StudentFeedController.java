@@ -19,8 +19,10 @@ public class StudentFeedController
     StudentFeedService service;
  
     @PostMapping("/studentfeed")
-    public void fetchFeed( @Valid @RequestBody StudentFeedRequest StudentFeedRequest)
+    public List<Announcement> fetchFeed( @Valid @RequestBody StudentFeedRequest StudentFeedRequest)
     {
-        service.fetchFeed(StudentFeedRequest.getKey());
+        List<Announcement> list = service.fetchFeed(StudentFeedRequest.getKey());
+        
+        return list;
     }
 }
