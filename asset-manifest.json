@@ -1,20 +1,20 @@
 {
   "files": {
-    "main.css": "/ClubSC/static/css/main.0e031a03.chunk.css",
-    "main.js": "/ClubSC/static/js/main.c2576556.chunk.js",
-    "main.js.map": "/ClubSC/static/js/main.c2576556.chunk.js.map",
+    "main.css": "/ClubSC/static/css/main.326d042c.chunk.css",
+    "main.js": "/ClubSC/static/js/main.89fd30bb.chunk.js",
+    "main.js.map": "/ClubSC/static/js/main.89fd30bb.chunk.js.map",
     "runtime-main.js": "/ClubSC/static/js/runtime-main.2dca5acc.js",
     "runtime-main.js.map": "/ClubSC/static/js/runtime-main.2dca5acc.js.map",
-    "static/js/2.c259534f.chunk.js": "/ClubSC/static/js/2.c259534f.chunk.js",
-    "static/js/2.c259534f.chunk.js.map": "/ClubSC/static/js/2.c259534f.chunk.js.map",
+    "static/js/2.695f015e.chunk.js": "/ClubSC/static/js/2.695f015e.chunk.js",
+    "static/js/2.695f015e.chunk.js.map": "/ClubSC/static/js/2.695f015e.chunk.js.map",
     "index.html": "/ClubSC/index.html",
-    "static/css/main.0e031a03.chunk.css.map": "/ClubSC/static/css/main.0e031a03.chunk.css.map",
-    "static/js/2.c259534f.chunk.js.LICENSE.txt": "/ClubSC/static/js/2.c259534f.chunk.js.LICENSE.txt"
+    "static/css/main.326d042c.chunk.css.map": "/ClubSC/static/css/main.326d042c.chunk.css.map",
+    "static/js/2.695f015e.chunk.js.LICENSE.txt": "/ClubSC/static/js/2.695f015e.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.2dca5acc.js",
-    "static/js/2.c259534f.chunk.js",
-    "static/css/main.0e031a03.chunk.css",
-    "static/js/main.c2576556.chunk.js"
+    "static/js/2.695f015e.chunk.js",
+    "static/css/main.326d042c.chunk.css",
+    "static/js/main.89fd30bb.chunk.js"
   ]
 }
