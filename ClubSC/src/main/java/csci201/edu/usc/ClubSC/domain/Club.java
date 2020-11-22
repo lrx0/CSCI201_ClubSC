@@ -12,8 +12,6 @@ public class Club {
 	private String username;
 	@Column(nullable = false, unique = false)
 	private String description;
-	@OneToMany(cascade = CascadeType.ALL, mappedBy="club")
-	private List<Announcement> announcements;
 	
 	@ManyToMany(mappedBy = "followedClubs")
 	private Set<Student> followerStudents;
@@ -27,13 +25,7 @@ public class Club {
 		this.club_id = club_id;
 		this.username = username;
 	}
-	
-	public List<Announcement> getAnnouncements() {
-		return announcements;
-	}
-	public void setAnnouncements(List<Announcement> announcements) {
-		this.announcements = announcements;
-	}
+
 	public Set<Student> getFollowerStudents() {
 		return followerStudents;
 	}
