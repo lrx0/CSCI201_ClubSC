@@ -7,40 +7,36 @@ import javax.persistence.*;
 public class Announcement {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	private long post_id;
-	private long club_id;
+	private long postid;
+	private long clubid;
+	@Column(nullable = false, unique = false)
 	private String body;
+	@Column(nullable = false, unique = false)
 	private Timestamp timestamp;
 	
-
 	
 	public Announcement() {
 		
 	}
-	
-	public Announcement(long club_id, String body, Timestamp timestamp2) {
-		this.club_id = club_id;
+
+
+	public Announcement(long clubid, String body, Timestamp timestamp2) {
+		this.post_id = timestamp2.getTime();
+		this.clubid = clubid;
 		this.body = body;
 		this.timestamp = timestamp2;
 	}
-	
-	/*public Club getClub() {
-		return club;
+	public long getPostid() {
+		return postid;
 	}
-	public void setClub(Club club) {
-		this.club = club;
-	}*/
-	public long getPost_id() {
-		return post_id;
+	public void setPostid(long post_id) {
+		this.postid = post_id;
 	}
-	public void setPost_id(long post_id) {
-		this.post_id = post_id;
+	public long getClubid() {
+		return clubid;
 	}
-	public long getClub_id() {
-		return club_id;
-	}
-	public void setClub_id(long club_id) {
-		this.club_id = club_id;
+	public void setClubid(long clubid) {
+		this.clubid = clubid;
 	}
 	public String getBody() {
 		return body;
