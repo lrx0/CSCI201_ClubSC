@@ -12,7 +12,7 @@ import org.springframework.stereotype.Repository;
  
 @Repository
 public interface ClubSearchRepository extends PagingAndSortingRepository<Club, Long> {
-	 @Query(value = "SELECT * FROM club c WHERE " +
+	 @Query(value = "SELECT username,club_ID FROM club c WHERE " +
 	            "c.username LIKE" + " %" + ":searchTerm" + "% " +
 			     "group by username",
 	            nativeQuery = true)
