@@ -24,17 +24,17 @@ INSERT INTO student VALUES
     ('31','ISEStudent'),
     ('32','CSBAStudent');
 INSERT INTO announcement VALUES
-	('1','We are The Advanced Spacecraft Propulsion and Energy (ASPEN) Laboratory','21','2020-11-21','21'),
-    ('2','We are The AeroDesign Team of USC','11','2020-11-21','11'),
-    ('3','We are The USC Chapter of the American Academy of Environmental Engineers and Scientists','12','2020-11-21','12'),
-    ('4','We are The American Society of Civil Engineers','13','2020-11-21','13'),
-    ('5','We are The American Society of Mechanical Engineers','14','2020-11-21','14'),
-    ('6','We are USC’s Autonomous Underwater Vehicle Design Team','15','2020-11-21','15'),
-    ('7','We are  Center for AI in Societys Student Branch','16','2020-11-21','16'),
-    ('8','We are Cyber Security and Forensics Organization','17','2020-11-21','17'),
-    ('9','We are Girls in Tech','18','2020-11-21','18'),
-    ('10','We are LavaLab','19','2020-11-21','19'),
-    ('11','We are SparkSc','20','2020-11-21','20');
+	('1','We are The Advanced Spacecraft Propulsion and Energy (ASPEN) Laboratory','21','2020-11-21'),
+    ('2','We are The AeroDesign Team of USC','11','2020-11-21'),
+    ('3','We are The USC Chapter of the American Academy of Environmental Engineers and Scientists','12','2020-11-21'),
+    ('4','We are The American Society of Civil Engineers','13','2020-11-21'),
+    ('5','We are The American Society of Mechanical Engineers','14','2020-11-21'),
+    ('6','We are USC’s Autonomous Underwater Vehicle Design Team','15','2020-11-21'),
+    ('7','We are  Center for AI in Societys Student Branch','16','2020-11-21'),
+    ('8','We are Cyber Security and Forensics Organization','17','2020-11-21'),
+    ('9','We are Girls in Tech','18','2020-11-21'),
+    ('10','We are LavaLab','19','2020-11-21'),
+    ('11','We are SparkSc','20','2020-11-21');
 INSERT INTO follower VALUES 
 	('27','12'),
 	('26','13'),
