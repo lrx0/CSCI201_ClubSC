@@ -1,12 +1,18 @@
 import React, { useState } from 'react';
+import axios from 'axios';
+import ResultsPage from './ResultsPage';
+import Route from '../components/Route';
 import ContainerView from '../components/ContainerView';
 import SearchBar from '../components/SearchBar';
 
 const LandingPage = () => {
   const [term, setTerm] = useState('');
+  const [results, setResults] = useState([]);
 
-  const queryResults = (event) => {
-    console.log(`Searching for ${term}...`)
+  const queryResults = async (event) => {
+    const {data} = await axios.get("https://en.wikipedia.org/w/api.php", {});
+
+    setResults(data)
 
     event.preventDefault();
     window.history.pushState({}, '', '/search');
@@ -25,6 +31,9 @@ const LandingPage = () => {
           <div className="row d-flex flex-column align-items-center">
             <div className="col-8">
               <SearchBar term={term} onTermChange={setTerm}/>
+              <Route path="/search">
+                <ResultsPage results={results}/>
+              </Route>
             </div>
             <button className="btn btn-light mt-5" type="submit">Search Clubs</button>
           </div>

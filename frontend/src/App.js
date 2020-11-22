@@ -2,7 +2,6 @@ import React from 'react';
 import LandingPage from './pages/LandingPage';
 import LoginPage from './pages/LoginPage';
 import SignupPage from './pages/SignupPage';
-import ResultsPage from './pages/ResultsPage';
 import UserDashboard from './pages/UserDashboard';
 import ClubDashboard from './pages/ClubDashboard';
 import ClubPage from './pages/ClubPage';
@@ -14,9 +13,6 @@ const App = () => {
     <div>
       <Route path="/">
         <LandingPage />
-      </Route>
-      <Route path="/search">
-        <ResultsPage />
       </Route>
       <Route path="/login">
         <LoginPage />
