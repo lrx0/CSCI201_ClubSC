@@ -25,4 +25,9 @@ public class StudentFollowService
         Follow f = new Follow(name,id);
         fr.save(f);
     }
+
+	public void followClub(String name, String club) {
+		// TODO Auto-generated method stub
+		
+	}
 }

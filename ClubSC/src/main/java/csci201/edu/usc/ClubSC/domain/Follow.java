@@ -2,13 +2,20 @@ package csci201.edu.usc.ClubSC.domain;
 
 import javax.persistence.*;
 import java.util.*;
-
+import java.util.Date; 
+import java.util.Calendar; 
 @Entity
 public class Follow {
-    public Long student_id;
-    public Long club_id;
+	@Id
+	@Column(nullable = false, unique = true)
+	private Long follow_id;
+	@Column(nullable = false, unique = false)
+	public Long student_id;
+	@Column(nullable = false, unique = false)
+	public Long club_id;
     public Follow(Long s, Long c)
     {
+    	follow_id = System.currentTimeMillis();
         student_id = s;
         club_id = c;
     }
