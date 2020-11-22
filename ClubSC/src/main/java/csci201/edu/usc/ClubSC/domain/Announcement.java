@@ -12,27 +12,24 @@ public class Announcement {
 	private String body;
 	private Timestamp timestamp;
 	
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "club")
-	private Club club;
+
 	
 	public Announcement() {
 		
 	}
 	
-	public Announcement(long club_id, String body, Timestamp timestamp2, Club club) {
+	public Announcement(long club_id, String body, Timestamp timestamp2) {
 		this.club_id = club_id;
 		this.body = body;
 		this.timestamp = timestamp2;
-		this.club = club;
 	}
 	
-	public Club getClub() {
+	/*public Club getClub() {
 		return club;
 	}
 	public void setClub(Club club) {
 		this.club = club;
-	}
+	}*/
 	public long getPost_id() {
 		return post_id;
 	}
