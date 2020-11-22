@@ -17,7 +17,7 @@ public class ClubPostRequest {
     public String getContent() {
         return content;
     }
-	public void setKey(String content) {
+	public void setContent(String content) {
         this.content = content;
     }
 }
