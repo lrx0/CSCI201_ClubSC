@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import Faker from 'faker';
 import Post from '../components/Post';
 import axios from 'axios';
 import ContainerView from '../components/ContainerView';
