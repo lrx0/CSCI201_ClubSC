@@ -1,15 +1,70 @@
-import React from 'react';
-import Faker from 'faker';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import Post from '../components/Post';
 import InputArea from '../components/InputArea';
 import ContainerView from '../components/ContainerView';
+import { authHeader } from '../App';
 
-const ClubDashboard = () => {
-  const name = "This is a Club";
-  const description = "I'm baby unicorn fixie sriracha trust fund succulents vape four dollar toast selfies literally retro neutra meggings. Mlkshk blue bottle salvia man bun green juice cardigan, vice heirloom. Pickled occupy roof party, narwhal bespoke disrupt chillwave. Hot chicken venmo put a bird on it af pitchfork man braid vexillologist edison bulb vaporware pickled drinking vinegar. Mlkshk cold-pressed intelligentsia, cardigan locavore vegan tattooed slow-carb swag man bun. Dummy text? More like dummy thicc text, amirite?";
+const ClubDashboard = ({ user, setUser }) => {
+  const [ name, setName ] = useState('');
+  const [ description, setDescription ] = useState('');
+  const [ announcements, setAnnouncements ] = useState([]);
+  const [ postText, setPostText ] = useState([]);
+
+  useEffect(() => {
+    if(!user){
+      window.history.pushState({}, '', '/');
+      const navEvent = new PopStateEvent('popstate');
+      window.dispatchEvent(navEvent);
+    }
+  })
+
+  useEffect(() => {
+    const getClubInfo = async () => {
+      const { data } = await axios.post("http://localhost:8080/app/clubpage",
+        {
+          key: user.id
+        }
+      );
+
+      setName(data.club_name);
+      setDescription(data.club_desc);
+      setAnnouncements(data.announcements);
+    }
+
+    getClubInfo();
+  }, []);
+
+  const makePost = async (e) => {
+    e.preventDefault();
+
+    if(postText.length < 20) { return; }
+
+    axios.post("http://localhost:8080/app/clubpost",
+      {
+        content: postText
+      },
+      { headers: authHeader() });
+
+    const { data: {announcements} } = await axios.post("http://localhost:8080/app/clubpage",
+      {
+        key: user.id
+      }
+    );
+
+    setAnnouncements(announcements);
+  }
+
+  const renderedAnnouncements = announcements.map((a) => {
+    return (
+      <Post key={a.postid} timestamp={a.timestamp} red={true}>
+        <p>{a.body}</p>
+      </Post>
+    );
+  });
 
   return (
-    <ContainerView logoOnly={true}>
+    <ContainerView logoOnly={true} user={user} setUser={setUser}>
       <div className="container">
         <div className="d-flex flex-column justify-content-center align-items-center">
           <h1 className="mt-4">{name}</h1>
@@ -17,29 +72,14 @@ const ClubDashboard = () => {
         </div>
         <hr />
         <Post club="Club Name" red={true}>
-          <div className="d-flex flex-column justify-content-center align-items-fill">
-            <InputArea placeholder="Make a new post" />
-            <button className="btn btn-secondary">Post</button>
-          </div>
+          <form onSubmit={makePost}>
+            <div className="d-flex flex-column justify-content-center align-items-fill">
+              <InputArea placeholder="Make a new post" onChange={setPostText} className="mb-0 mt-2"/>
+              <button className="btn btn-secondary mt-0 mb-4">Post</button>
+            </div>
+          </form>
         </Post>
-        <Post club="blah" timestamp="06/16/2020" red={true}>
-          I'm baby ramps kickstarter pour-over quinoa pop-up cardigan. Meditation whatever tbh, la croix chicharrones hot chicken distillery vegan skateboard etsy. 3 wolf moon single-origin coffee swag, sartorial pickled fashion axe selfies small batch. La croix kinfolk craft beer truffaut vegan seitan meditation schlitz copper mug pabst lo-fi banh mi. Dummy text? More like dummy thicc text, amirite?
-        </Post>
-        <Post club="blah" timestamp="06/16/2020" red={true}>
-          I'm baby ramps kickstarter pour-over quinoa pop-up cardigan. Meditation whatever tbh, la croix chicharrones hot chicken distillery vegan skateboard etsy. 3 wolf moon single-origin coffee swag, sartorial pickled fashion axe selfies small batch. La croix kinfolk craft beer truffaut vegan seitan meditation schlitz copper mug pabst lo-fi banh mi. Dummy text? More like dummy thicc text, amirite?
-        </Post>
-        <Post club="blah" timestamp="06/16/2020" red={true}>
-          I'm baby ramps kickstarter pour-over quinoa pop-up cardigan. Meditation whatever tbh, la croix chicharrones hot chicken distillery vegan skateboard etsy. 3 wolf moon single-origin coffee swag, sartorial pickled fashion axe selfies small batch. La croix kinfolk craft beer truffaut vegan seitan meditation schlitz copper mug pabst lo-fi banh mi. Dummy text? More like dummy thicc text, amirite?
-        </Post>
-        <Post club="blah" timestamp="06/16/2020" red={true}>
-          I'm baby ramps kickstarter pour-over quinoa pop-up cardigan. Meditation whatever tbh, la croix chicharrones hot chicken distillery vegan skateboard etsy. 3 wolf moon single-origin coffee swag, sartorial pickled fashion axe selfies small batch. La croix kinfolk craft beer truffaut vegan seitan meditation schlitz copper mug pabst lo-fi banh mi. Dummy text? More like dummy thicc text, amirite?
-        </Post>
-        <Post club="blah" timestamp="06/16/2020" red={true}>
-          I'm baby ramps kickstarter pour-over quinoa pop-up cardigan. Meditation whatever tbh, la croix chicharrones hot chicken distillery vegan skateboard etsy. 3 wolf moon single-origin coffee swag, sartorial pickled fashion axe selfies small batch. La croix kinfolk craft beer truffaut vegan seitan meditation schlitz copper mug pabst lo-fi banh mi. Dummy text? More like dummy thicc text, amirite?
-        </Post>
-        <Post club="blah" timestamp="06/16/2020" red={true}>
-          I'm baby ramps kickstarter pour-over quinoa pop-up cardigan. Meditation whatever tbh, la croix chicharrones hot chicken distillery vegan skateboard etsy. 3 wolf moon single-origin coffee swag, sartorial pickled fashion axe selfies small batch. La croix kinfolk craft beer truffaut vegan seitan meditation schlitz copper mug pabst lo-fi banh mi. Dummy text? More like dummy thicc text, amirite?
-        </Post>
+        {renderedAnnouncements}
       </div>
     </ContainerView>
   );

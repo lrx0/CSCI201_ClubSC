@@ -4,7 +4,7 @@ import Post from '../components/Post';
 import axios from 'axios';
 import ContainerView from '../components/ContainerView';
 
-const ClubPage = ({  id, onTermChange }) => {
+const ClubPage = ({  id, onTermChange, user }) => {
   const [info, setInfo] = useState({
     club_id: null,
     club_name: '',
@@ -29,13 +29,13 @@ const ClubPage = ({  id, onTermChange }) => {
   const renderedAnnouncements = info.announcements.map((a) => {
     return (
       <Post key={a.postid} timestamp={a.timestamp} red={true}>
-        {a.body}
+        <p>{a.body}</p>
       </Post>
     );
   });
 
   return (
-    <ContainerView search={true} user={Faker.name.findName()} onTermChange={onTermChange}>
+    <ContainerView search={true} user={user} onTermChange={onTermChange}>
       <div className="container">
         <div className="d-flex flex-column justify-content-center align-items-center">
           <h1 className="mt-4">{info.club_name}</h1>
