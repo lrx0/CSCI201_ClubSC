@@ -12,12 +12,12 @@ const ClubDashboard = ({ user, setUser }) => {
   const [ postText, setPostText ] = useState([]);
 
   useEffect(() => {
-    if(!user){
+    if(!user || user.roles.includes('ROLE_STUDENT')){
       window.history.pushState({}, '', '/');
       const navEvent = new PopStateEvent('popstate');
       window.dispatchEvent(navEvent);
     }
-  })
+  });
 
   useEffect(() => {
     const getClubInfo = async () => {
@@ -45,6 +45,8 @@ const ClubDashboard = ({ user, setUser }) => {
         content: postText
       },
       { headers: authHeader() });
+
+    setPostText('');
 
     const { data: {announcements} } = await axios.post("http://localhost:8080/app/clubpage",
       {
@@ -74,7 +76,7 @@ const ClubDashboard = ({ user, setUser }) => {
         <Post club="Club Name" red={true}>
           <form onSubmit={makePost}>
             <div className="d-flex flex-column justify-content-center align-items-fill">
-              <InputArea placeholder="Make a new post" onChange={setPostText} className="mb-0 mt-2"/>
+              <InputArea placeholder="Make a new post" value={postText} onChange={setPostText} className="mb-0 mt-2"/>
               <button className="btn btn-secondary mt-0 mb-4">Post</button>
             </div>
           </form>

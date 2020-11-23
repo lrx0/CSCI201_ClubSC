@@ -8,6 +8,14 @@ const ResultsPage = ({ term, onTermChange, onClubSelect, user }) => {
   const [results, setResults] = useState([]);
 
   useEffect(() => {
+    if(user && user.roles.includes('ROLE_CLUB')){
+      window.history.pushState({}, '', '/');
+      const navEvent = new PopStateEvent('popstate');
+      window.dispatchEvent(navEvent);
+    }
+  });
+
+  useEffect(() => {
     let isCancelled = false;
 
     const search = async () => {

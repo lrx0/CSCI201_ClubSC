@@ -1,13 +1,21 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import ContainerView from '../components/ContainerView';
 import InputField from '../components/InputField';
 import Link from '../components/Link';
 
-const LoginPage = ( { setUser } ) => {
+const LoginPage = ( { user, setUser } ) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [invalidLogin, setInvalidLogin] = useState(false);
+
+  useEffect(() => {
+    if(user){
+      window.history.pushState({}, '', '/');
+      const navEvent = new PopStateEvent('popstate');
+      window.dispatchEvent(navEvent);
+    }
+  });
 
   const handleLogin = (e) => {
     const login = async (user, pw) => {

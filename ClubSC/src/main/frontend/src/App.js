@@ -23,7 +23,7 @@ const authHeader = () => {
 const App = () => {
   const [term, setTerm] = useState('');
   const [clubID, setClubID] = useState(null);
-  const [ user , setUser ] = useState(JSON.parse(localStorage.getItem('user')));
+  const [ user, setUser ] = useState(JSON.parse(localStorage.getItem('user')));
 
   return (
     <div>
@@ -34,10 +34,10 @@ const App = () => {
         <ResultsPage user={user} onTermChange={setTerm} onClubSelect={setClubID} term={term ? term : undefined}/>
       </Route>
       <Route path="/login">
-        <LoginPage setUser={setUser} />
+        <LoginPage user={user} setUser={setUser} />
       </Route>
       <Route path="/signup">
-        <SignupPage setUser={setUser} />
+        <SignupPage user={user} setUser={setUser} />
       </Route>
       <Route path="/userdash">
         <UserDashboard user={user} onTermChange={setTerm}/>

@@ -1,37 +1,45 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import Post from '../components/Post';
 import ContainerView from '../components/ContainerView';
+import axios from 'axios';
+import { authHeader } from '../App';
 
 const UserDashboard = ({ onTermChange, user }) => {
+  const [announcements, setAnnouncements] = useState([]);
+
   useEffect(() => {
-    if(!user){
+    if(!user || user.roles.includes('ROLE_CLUB')){
       window.history.pushState({}, '', '/');
       const navEvent = new PopStateEvent('popstate');
       window.dispatchEvent(navEvent);
     }
-  })
+  });
+
+  useEffect(() => {
+    const search = async () => {
+      const { data } = await axios.get("http://localhost:8080/app/studentfeed",
+        { headers: authHeader() });
+
+      setAnnouncements(data);
+    }
+
+    search();
+  }, []);
+
+
+
+  const renderedAnnouncements = announcements.map((a) => {
+    return (
+      <Post club={a.username} key={a.postid} timestamp={a.timestamp}>
+        <p>{a.body}</p>
+      </Post>
+    );
+  });
 
   return (
     <ContainerView search={true} onTermChange={onTermChange} user={user}>
       <div className="container">
-        <Post club="blah" timestamp="06/16/2020">
-          I'm baby ramps kickstarter pour-over quinoa pop-up cardigan. Meditation whatever tbh, la croix chicharrones hot chicken distillery vegan skateboard etsy. 3 wolf moon single-origin coffee swag, sartorial pickled fashion axe selfies small batch. La croix kinfolk craft beer truffaut vegan seitan meditation schlitz copper mug pabst lo-fi banh mi. Dummy text? More like dummy thicc text, amirite?
-        </Post>
-        <Post club="blah" timestamp="06/16/2020">
-          I'm baby ramps kickstarter pour-over quinoa pop-up cardigan. Meditation whatever tbh, la croix chicharrones hot chicken distillery vegan skateboard etsy. 3 wolf moon single-origin coffee swag, sartorial pickled fashion axe selfies small batch. La croix kinfolk craft beer truffaut vegan seitan meditation schlitz copper mug pabst lo-fi banh mi. Dummy text? More like dummy thicc text, amirite?
-        </Post>
-        <Post club="blah" timestamp="06/16/2020">
-          I'm baby ramps kickstarter pour-over quinoa pop-up cardigan. Meditation whatever tbh, la croix chicharrones hot chicken distillery vegan skateboard etsy. 3 wolf moon single-origin coffee swag, sartorial pickled fashion axe selfies small batch. La croix kinfolk craft beer truffaut vegan seitan meditation schlitz copper mug pabst lo-fi banh mi. Dummy text? More like dummy thicc text, amirite?
-        </Post>
-        <Post club="blah" timestamp="06/16/2020">
-          I'm baby ramps kickstarter pour-over quinoa pop-up cardigan. Meditation whatever tbh, la croix chicharrones hot chicken distillery vegan skateboard etsy. 3 wolf moon single-origin coffee swag, sartorial pickled fashion axe selfies small batch. La croix kinfolk craft beer truffaut vegan seitan meditation schlitz copper mug pabst lo-fi banh mi. Dummy text? More like dummy thicc text, amirite?
-        </Post>
-        <Post club="blah" timestamp="06/16/2020">
-          I'm baby ramps kickstarter pour-over quinoa pop-up cardigan. Meditation whatever tbh, la croix chicharrones hot chicken distillery vegan skateboard etsy. 3 wolf moon single-origin coffee swag, sartorial pickled fashion axe selfies small batch. La croix kinfolk craft beer truffaut vegan seitan meditation schlitz copper mug pabst lo-fi banh mi. Dummy text? More like dummy thicc text, amirite?
-        </Post>
-        <Post club="blah" timestamp="06/16/2020">
-          I'm baby ramps kickstarter pour-over quinoa pop-up cardigan. Meditation whatever tbh, la croix chicharrones hot chicken distillery vegan skateboard etsy. 3 wolf moon single-origin coffee swag, sartorial pickled fashion axe selfies small batch. La croix kinfolk craft beer truffaut vegan seitan meditation schlitz copper mug pabst lo-fi banh mi. Dummy text? More like dummy thicc text, amirite?
-        </Post>
+        {renderedAnnouncements}
       </div>
     </ContainerView>
   );

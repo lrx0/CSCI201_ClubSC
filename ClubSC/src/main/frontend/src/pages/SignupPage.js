@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import ContainerView from '../components/ContainerView';
 import InputField from '../components/InputField';
@@ -104,13 +104,21 @@ const ClubFields = ({ username, email, password, description, setUsername, setEm
   );
 };
 
-const SignupPage = ({ setUser }) => {
+const SignupPage = ({ setUser, user }) => {
   const [ role, setRole ] = useState("student");
   const [ username, setUsername ] = useState('');
   const [ email, setEmail ] = useState('');
   const [ password, setPassword ] = useState('');
   const [ description, setDescription ] = useState('');
   const [ errmsg, setErrMsg ] = useState('');
+
+  useEffect(() => {
+    if(user){
+      window.history.pushState({}, '', '/');
+      const navEvent = new PopStateEvent('popstate');
+      window.dispatchEvent(navEvent);
+    }
+  });
 
   const handleSignup = (e) => {
     const signup = async (user, email, pw, desc, r) => {
