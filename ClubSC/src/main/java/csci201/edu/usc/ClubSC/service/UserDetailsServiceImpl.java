@@ -1,6 +1,5 @@
 package csci201.edu.usc.ClubSC.service;
 
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.*;
 import org.springframework.stereotype.Service;

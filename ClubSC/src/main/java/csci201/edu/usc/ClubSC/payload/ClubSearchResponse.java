@@ -1,7 +1,6 @@
 package csci201.edu.usc.ClubSC.payload;
 
 import java.util.List;
-
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 

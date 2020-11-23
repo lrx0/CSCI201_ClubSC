@@ -1,9 +1,6 @@
 package csci201.edu.usc.ClubSC.domain;
 
-import java.sql.Timestamp;
 import java.util.List;
-
-import javax.persistence.*;
 
 public class ClubPage {
 

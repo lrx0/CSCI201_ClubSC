@@ -1,8 +1,5 @@
 package csci201.edu.usc.ClubSC.payload;
 
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Size;
-
 public class StudentFollowRequest {
     private Long club;
 	

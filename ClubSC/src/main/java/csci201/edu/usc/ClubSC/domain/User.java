@@ -2,11 +2,8 @@ package csci201.edu.usc.ClubSC.domain;
 
 import java.util.HashSet;
 import java.util.Set;
-
 import javax.persistence.*;
 import javax.validation.constraints.*;
-
-import org.springframework.beans.factory.annotation.Autowired;
 
 @Entity
 @Table(	name = "user", 
