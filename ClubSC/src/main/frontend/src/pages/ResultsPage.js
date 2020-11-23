@@ -4,27 +4,39 @@ import SearchResult from '../components/SearchResult';
 import ResultContainer from '../components/ResultContainer';
 import ContainerView from '../components/ContainerView';
 
-const ResultsPage = ({ term, onTermChange }) => {
+const ResultsPage = ({ term, onTermChange, onClubSelect }) => {
   const [results, setResults] = useState([]);
 
   useEffect(() => {
-    const search = async () => {
-      const { data } = await axios.post("http://localhost:8080/app/clubsearch", {
-        key: term
-      });
+    let isCancelled = false;
 
-      setResults(data);
+    const search = async () => {
+      const { data } = await axios.post("http://localhost:8080/app/clubsearch",
+        {
+          key: term
+        }
+      )
+
+      if(!isCancelled){
+        setResults(data);
+      }
     }
 
     search();
+
+    return () => {
+      isCancelled = true;
+    };
   }, [term]);
 
   const renderedResults = results.map((result) => {
     return (
       <SearchResult
+        onClubSelect={onClubSelect}
         key={result.club_id}
-        title={result.username}
-        text={result.desc}
+        id={result.club_id}
+        name={result.username}
+        description={result.desc}
       />
     );
   });
@@ -40,5 +52,9 @@ const ResultsPage = ({ term, onTermChange }) => {
     </ContainerView>
   );
 };
+
+ResultsPage.defaultProps = {
+  term: window.location.search.slice(1, window.location.search.length)
+}
 
 export default ResultsPage;

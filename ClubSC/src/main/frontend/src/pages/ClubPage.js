@@ -1,41 +1,55 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Faker from 'faker';
 import Post from '../components/Post';
+import axios from 'axios';
 import ContainerView from '../components/ContainerView';
 
-const ClubPage = ({ onTermChange }) => {
-  const name = "This is a Club";
-  const description = "I'm baby unicorn fixie sriracha trust fund succulents vape four dollar toast selfies literally retro neutra meggings. Mlkshk blue bottle salvia man bun green juice cardigan, vice heirloom. Pickled occupy roof party, narwhal bespoke disrupt chillwave. Hot chicken venmo put a bird on it af pitchfork man braid vexillologist edison bulb vaporware pickled drinking vinegar. Mlkshk cold-pressed intelligentsia, cardigan locavore vegan tattooed slow-carb swag man bun. Dummy text? More like dummy thicc text, amirite?";
+const ClubPage = ({  id, onTermChange }) => {
+  const [info, setInfo] = useState({
+    club_id: null,
+    club_name: '',
+    club_desc: '',
+    announcements: []
+  });
+
+  useEffect(() => {
+    const getClubInfo = async () => {
+      const { data } = await axios.post("http://localhost:8080/app/clubpage",
+        {
+          key: id
+        }
+      );
+
+      setInfo(data);
+    }
+
+    getClubInfo();
+  }, [id]);
+
+  const renderedAnnouncements = info.announcements.map((a) => {
+    return (
+      <Post key={a.postid} timestamp={a.timestamp} red={true}>
+        {a.body}
+      </Post>
+    );
+  });
 
   return (
     <ContainerView search={true} user={Faker.name.findName()} onTermChange={onTermChange}>
       <div className="container">
         <div className="d-flex flex-column justify-content-center align-items-center">
-          <h1 className="mt-4">{name}</h1>
-          <p>{description}</p>
+          <h1 className="mt-4">{info.club_name}</h1>
+          <p>{info.club_desc}</p>
         </div>
         <hr />
-        <Post club="blah" timestamp="06/16/2020" red={true}>
-          I'm baby ramps kickstarter pour-over quinoa pop-up cardigan. Meditation whatever tbh, la croix chicharrones hot chicken distillery vegan skateboard etsy. 3 wolf moon single-origin coffee swag, sartorial pickled fashion axe selfies small batch. La croix kinfolk craft beer truffaut vegan seitan meditation schlitz copper mug pabst lo-fi banh mi. Dummy text? More like dummy thicc text, amirite?
-        </Post>
-        <Post club="blah" timestamp="06/16/2020" red={true}>
-          I'm baby ramps kickstarter pour-over quinoa pop-up cardigan. Meditation whatever tbh, la croix chicharrones hot chicken distillery vegan skateboard etsy. 3 wolf moon single-origin coffee swag, sartorial pickled fashion axe selfies small batch. La croix kinfolk craft beer truffaut vegan seitan meditation schlitz copper mug pabst lo-fi banh mi. Dummy text? More like dummy thicc text, amirite?
-        </Post>
-        <Post club="blah" timestamp="06/16/2020" red={true}>
-          I'm baby ramps kickstarter pour-over quinoa pop-up cardigan. Meditation whatever tbh, la croix chicharrones hot chicken distillery vegan skateboard etsy. 3 wolf moon single-origin coffee swag, sartorial pickled fashion axe selfies small batch. La croix kinfolk craft beer truffaut vegan seitan meditation schlitz copper mug pabst lo-fi banh mi. Dummy text? More like dummy thicc text, amirite?
-        </Post>
-        <Post club="blah" timestamp="06/16/2020" red={true}>
-          I'm baby ramps kickstarter pour-over quinoa pop-up cardigan. Meditation whatever tbh, la croix chicharrones hot chicken distillery vegan skateboard etsy. 3 wolf moon single-origin coffee swag, sartorial pickled fashion axe selfies small batch. La croix kinfolk craft beer truffaut vegan seitan meditation schlitz copper mug pabst lo-fi banh mi. Dummy text? More like dummy thicc text, amirite?
-        </Post>
-        <Post club="blah" timestamp="06/16/2020" red={true}>
-          I'm baby ramps kickstarter pour-over quinoa pop-up cardigan. Meditation whatever tbh, la croix chicharrones hot chicken distillery vegan skateboard etsy. 3 wolf moon single-origin coffee swag, sartorial pickled fashion axe selfies small batch. La croix kinfolk craft beer truffaut vegan seitan meditation schlitz copper mug pabst lo-fi banh mi. Dummy text? More like dummy thicc text, amirite?
-        </Post>
-        <Post club="blah" timestamp="06/16/2020" red={true}>
-          I'm baby ramps kickstarter pour-over quinoa pop-up cardigan. Meditation whatever tbh, la croix chicharrones hot chicken distillery vegan skateboard etsy. 3 wolf moon single-origin coffee swag, sartorial pickled fashion axe selfies small batch. La croix kinfolk craft beer truffaut vegan seitan meditation schlitz copper mug pabst lo-fi banh mi. Dummy text? More like dummy thicc text, amirite?
-        </Post>
+        {renderedAnnouncements}
       </div>
     </ContainerView>
   );
 };
+
+ClubPage.defaultProps = {
+  id: window.location.search.slice(1, window.location.search.length)
+}
 
 export default ClubPage;
