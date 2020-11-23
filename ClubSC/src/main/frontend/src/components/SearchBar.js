@@ -10,8 +10,8 @@ const SearchBar = ({ button, width, onTermChange }) => {
     event.preventDefault();
     onTermChange(tempTerm);
 
-    if(window.location.pathname !== '/search'){
-      window.history.pushState({}, '', '/search');
+    if(window.location.pathname + window.location.search !== `/search?${tempTerm}`){
+      window.history.pushState({}, '', `/search?${tempTerm}`);
 
       const navEvent = new PopStateEvent('popstate');
       window.dispatchEvent(navEvent);
