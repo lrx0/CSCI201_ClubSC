@@ -4,7 +4,7 @@ import SearchResult from '../components/SearchResult';
 import ResultContainer from '../components/ResultContainer';
 import ContainerView from '../components/ContainerView';
 
-const ResultsPage = ({ term, onTermChange, onClubSelect }) => {
+const ResultsPage = ({ term, onTermChange, onClubSelect, user }) => {
   const [results, setResults] = useState([]);
 
   useEffect(() => {
@@ -42,7 +42,7 @@ const ResultsPage = ({ term, onTermChange, onClubSelect }) => {
   });
 
   return (
-    <ContainerView search={true} onTermChange={onTermChange}>
+    <ContainerView search={true} onTermChange={onTermChange} user={user}>
       <div className="container">
       <p className="my-3" style={{textAlign:'center'}}>{`${results.length} results found`}</p>
       <ResultContainer>

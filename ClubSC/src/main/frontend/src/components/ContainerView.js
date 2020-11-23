@@ -4,13 +4,14 @@ import React from 'react';
 import Navbar from './Navbar';
 import Link from './Link';
 
-const ContainerView = ({ search, user, logoOnly, children, onTermChange }) => {
+const ContainerView = ({ search, user, setUser, logoOnly, children, onTermChange }) => {
   return (
     <div className = "page-contents" >
       <Navbar
         onTermChange={onTermChange}
         search = {search}
         user = {user}
+        setUser = {setUser}
         logoOnly = {logoOnly}
       />
       {children}
