@@ -48,4 +48,8 @@ const ClubPage = ({  id, onTermChange }) => {
   );
 };
 
+ClubPage.defaultProps = {
+  id: window.location.search.slice(1, window.location.search.length)
+}
+
 export default ClubPage;

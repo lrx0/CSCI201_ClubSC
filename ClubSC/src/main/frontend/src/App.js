@@ -10,8 +10,8 @@ import UserPage from './pages/UserPage';
 import Route from './components/Route';
 
 const App = () => {
-  const [term, setTerm] = useState('');
-  const [clubID, setClubID] = useState(null);
+  var [term, setTerm] = useState('');
+  var [clubID, setClubID] = useState(null);
 
   return (
     <div>
@@ -19,7 +19,7 @@ const App = () => {
         <LandingPage onTermChange={setTerm}/>
       </Route>
       <Route path="/search">
-        <ResultsPage onTermChange={setTerm} onClubSelect={setClubID} term={term}/>
+        <ResultsPage onTermChange={setTerm} onClubSelect={setClubID} term={term ? term : undefined}/>
       </Route>
       <Route path="/login">
         <LoginPage />
@@ -37,7 +37,7 @@ const App = () => {
         <ClubDashboard />
       </Route>
       <Route path="/club">
-        <ClubPage onTermChange={setTerm} id={clubID}/>
+        <ClubPage onTermChange={setTerm} id={clubID ? clubID : undefined}/>
       </Route>
     </div>
   );

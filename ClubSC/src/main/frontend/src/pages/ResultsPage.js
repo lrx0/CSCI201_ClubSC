@@ -53,4 +53,8 @@ const ResultsPage = ({ term, onTermChange, onClubSelect }) => {
   );
 };
 
+ResultsPage.defaultProps = {
+  term: window.location.search.slice(1, window.location.search.length)
+}
+
 export default ResultsPage;
