@@ -7,13 +7,13 @@ import javax.persistence.*;
 public class Announcement {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	private long postid;
+	private Long postid;
 	@Column(nullable = false, unique = false)
-	private long clubid;
+	private Long clubid;
 	@Column(nullable = false, unique = false)
 	private String body;
 	@Column(nullable = false, unique = false)
-	private Timestamp timestamp;
+	private String timestamp;
 	
 	
 	public Announcement() {
@@ -21,8 +21,7 @@ public class Announcement {
 	}
 
 
-	public Announcement(long clubid, String body, Timestamp timestamp2) {
-		this.postid = timestamp2.getTime();
+	public Announcement(long clubid, String body, String timestamp2) {
 		this.clubid = clubid;
 		this.body = body;
 		this.timestamp = timestamp2;
@@ -45,10 +44,10 @@ public class Announcement {
 	public void setBody(String body) {
 		this.body = body;
 	}
-	public Timestamp getTimestamp() {
+	public String getTimestamp() {
 		return timestamp;
 	}
-	public void setTimestamp(Timestamp timestamp) {
+	public void setTimestamp(String timestamp) {
 		this.timestamp = timestamp;
 	}
 }
