@@ -2,7 +2,10 @@ package csci201.edu.usc.ClubSC.service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.CompletableFuture;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 import csci201.edu.usc.ClubSC.domain.Club;
 import csci201.edu.usc.ClubSC.domain.ClubSearchRepository;
@@ -13,16 +16,17 @@ public class ClubSearchService
     @Autowired
     ClubSearchRepository repository;
      
-    public List<Club> getAllClubs(String key)
+    @Async
+    public CompletableFuture<List<Club>> getAllClubs(String key)
     {
- 
+    	
         List<Club> Result = repository.findAllClubs(key);
 
          
         if(Result!=null) {
-            return Result;
+            return CompletableFuture.completedFuture(Result);
         } else {
-            return new ArrayList<Club>();
+            return CompletableFuture.completedFuture(new ArrayList<Club>());
         }
     }
 }

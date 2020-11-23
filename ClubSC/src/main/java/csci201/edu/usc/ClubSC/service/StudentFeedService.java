@@ -33,7 +33,6 @@ public class StudentFeedService
         PriorityQueue<Integer> recentpost = new PriorityQueue<Integer>(); 
         for(Follow f : followedClubs) 
 		{
-        	
             Long c = f.clubid;
             recentpost.add(c.intValue());
             followedlinked.add(f);

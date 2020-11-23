@@ -79,7 +79,6 @@ public class AuthController {
 							 signUpRequest.getDescription());
 		Set<String> strRoles = signUpRequest.getRole();
 		Set<Role> roles = new HashSet<>();
-		int test = 0;
 
 		if (strRoles == null) {
 			Role userRole = roleRepository.findByName(ERole.ROLE_STUDENT)

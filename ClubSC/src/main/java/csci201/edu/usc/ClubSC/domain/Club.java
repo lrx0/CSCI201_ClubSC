@@ -1,7 +1,6 @@
 package csci201.edu.usc.ClubSC.domain;
 
 import javax.persistence.*;
-import java.util.*;
 
 @Entity
 public class Club {
