@@ -27,7 +27,8 @@ public class ClubPostService
         String ts = df.format(dateobj);
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		Long id = ((UserDetailsImpl) auth.getPrincipal()).getId();
-        Announcement a = new Announcement(id, body, ts);
+	    String username = ((UserDetailsImpl) auth.getPrincipal()).getUsername();
+        Announcement a = new Announcement(id, body, ts, username);
         ar.save(a);
     }
 }

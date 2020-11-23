@@ -14,6 +14,8 @@ public class Announcement {
 	private String body;
 	@Column(nullable = false, unique = false)
 	private String timestamp;
+	@Column(nullable = false, unique = false)
+	private String username;
 	
 	
 	public Announcement() {
@@ -21,11 +23,12 @@ public class Announcement {
 	}
 
 
-	public Announcement(long clubid, String body, String timestamp2) {
+	public Announcement(long clubid, String body, String timestamp2, String username) {
 		//this.postid = (long) 1;
 		this.clubid = clubid;
 		this.body = body;
 		this.timestamp = timestamp2;
+		this.username = username;
 	}
 	public long getPostid() {
 		return postid;
@@ -50,5 +53,11 @@ public class Announcement {
 	}
 	public void setTimestamp(String timestamp) {
 		this.timestamp = timestamp;
+	}
+	public String getUsername(){
+		return this.username;
+	}
+	public void setUsername(String username){
+		this.username = username;
 	}
 }

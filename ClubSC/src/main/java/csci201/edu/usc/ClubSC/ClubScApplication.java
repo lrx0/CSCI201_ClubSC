@@ -70,9 +70,18 @@ public class ClubScApplication {
 		  DateFormat df = new SimpleDateFormat("dd/MM/yy HH:mm:ss");
 	        Date dateobj = new Date();
 	        String ts = df.format(dateobj);
-		  for(int i = 1;i<=11;i++) {
-			  AnnouncementRepository.save(new Announcement(i,"Welcome to our club",ts));
-		  }
+		  
+	      AnnouncementRepository.save(new Announcement(1,"Welcome to our club ASPEN",ts,"ASPEN"));
+	      AnnouncementRepository.save(new Announcement(2,"Welcome to our club ADT",ts,"ADT"));
+	      AnnouncementRepository.save(new Announcement(3,"Welcome to our club AAEES",ts,"AAEES"));
+	      AnnouncementRepository.save(new Announcement(4,"Welcome to our club ASCE",ts,"ASCE"));
+	      AnnouncementRepository.save(new Announcement(5,"Welcome to our club ASME",ts,"ASME"));
+	      AnnouncementRepository.save(new Announcement(6,"Welcome to our club AUV",ts,"AUV"));
+	      AnnouncementRepository.save(new Announcement(7,"Welcome to our club CAIS++",ts,"CAIS++"));
+	      AnnouncementRepository.save(new Announcement(8,"Welcome to our club CybOrg",ts,"CybOrg"));
+	      AnnouncementRepository.save(new Announcement(9,"Welcome to our club GIT",ts,"GIT"));
+	      AnnouncementRepository.save(new Announcement(10,"Welcome to our club Lava",ts,"Lava"));
+	      AnnouncementRepository.save(new Announcement(11,"Welcome to our club SparkSC",ts,"SparkSC"));
 		  
       };
     }
