@@ -3,7 +3,9 @@ package csci201.edu.usc.ClubSC.service;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.PriorityQueue;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -35,14 +37,20 @@ public class StudentFeedService
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		Long id = ((UserDetailsImpl) auth.getPrincipal()).getId();
         List<Follow> followedClubs = fr.findByStudentid(id);
+        List <Follow> followedlinked = new LinkedList <Follow> ();
+        PriorityQueue<Integer> recentpost = new PriorityQueue<Integer>(); 
         for(Follow f : followedClubs) 
 		{
+        	
             Long c = f.clubid;
+            recentpost.add(c.intValue());
+            followedlinked.add(f);
 			fetchedAnnouncements.addAll(annrepo.findByclubid(c));
 			System.out.println(annrepo.findByclubid(c).size());
 		}
 		Collections.sort(fetchedAnnouncements, new Comparator<Announcement>() {
 			public int compare(Announcement a1, Announcement a2) {
+				
 				return a1.getTimestamp().compareTo(a2.getTimestamp());
 			}
 		});

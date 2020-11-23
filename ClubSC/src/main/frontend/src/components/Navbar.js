@@ -13,13 +13,9 @@ const Navbar = (props) => {
 
   useEffect(() => {
     const search = async () => {
-      const data = await axios.post("localhost:8080/app/clubsearch", {}, {
-        params: {
-          key: term
-        }
-      });
+      const { data } = await axios.post("http://localhost:8080/app/clubsearch", { key: term });
 
-      console.log(data);
+      setResults(data);
     }
 
     search();
