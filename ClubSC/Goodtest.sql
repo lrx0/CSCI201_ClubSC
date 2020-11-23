@@ -1,15 +1,15 @@
 INSERT INTO club VALUES
-	(100,'desc1','ASPEN'),
-    (101,'desc1','ADT'),
-    (102,'desc1','AAEES'),
-    (103,'desc1','ASCE'),
-    (104,'desc1','ASME'),
-    (105,'desc1','AUV'),
-    (106,'desc1','CAIS++'),
-    (107,'desc1','CybOrg'),
-    (108,'desc1','GIT'),
-    (109,'desc1','LAVA'),
-    (110,'desc1','SparkSC');
+	(100,'We are The Advanced Spacecraft Propulsion and Energy (ASPEN) Laboratory','ASPEN'),
+    (101,'We are The AeroDesign Team of USC','ADT'),
+    (102,'We are The USC Chapter of the American Academy of Environmental Engineers and Scientists','AAEES'),
+    (103,'We are The American Society of Civil Engineers','ASCE'),
+    (104,'We are The American Society of Mechanical Engineers','ASME'),
+    (105,'We are USC’s Autonomous Underwater Vehicle Design Team','AUV'),
+    (106,'We are  Center for AI in Societys Student Branch','CAIS++'),
+    (107,'We are Cyber Security and Forensics Organization','CybOrg'),
+    (108,'We are Girls in Tech','GIT'),
+    (109,'We are LavaLab','LAVA'),
+    (110,'We are SparkSc','SparkSC');
 INSERT INTO student VALUES 
 	(111,'MechEStudent'),
     (112,'Aerospacetudent'),
