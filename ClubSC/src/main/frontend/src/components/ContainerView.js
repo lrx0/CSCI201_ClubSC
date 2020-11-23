@@ -1,20 +1,20 @@
 import  '../stylesheets/master.css'
 import  '../stylesheets/ContainerView.css';
 import React from 'react';
-// import Faker from 'faker';
 import Navbar from './Navbar';
 import Link from './Link';
 
-const ContainerView = (props) => {
+const ContainerView = ({ search, user, logoOnly, children, onTermChange }) => {
   return (
     <div className = "page-contents" >
       <Navbar
-        search = {props.search}
-        user = {props.user}
-        logoOnly = {props.logoOnly}
+        onTermChange={onTermChange}
+        search = {search}
+        user = {user}
+        logoOnly = {logoOnly}
       />
-      {props.children}
-      <footer className = {`${props.logoOnly ? 'hide' : ''}`}>
+      {children}
+      <footer className = {`${logoOnly ? 'hide' : ''}`}>
         <div className = "navbar navbar-light bg-light flex-column responsive-footer justify-content-center">
           <div>
             <p className = "mb-0">© ClubSC 2020</p>

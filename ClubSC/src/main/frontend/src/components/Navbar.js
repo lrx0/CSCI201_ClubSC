@@ -1,36 +1,12 @@
 import  '../stylesheets/master.css';
 import  '../stylesheets/ContainerView.css'
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
-import ResultsPage from '../pages/ResultsPage';
-import Route from './Route';
 import SearchBar from './SearchBar';
 import Link from './Link';
 
-const Navbar = (props) => {
-  const [term, setTerm] = useState('');
-  const [results, setResults] = useState([]);
-
-  useEffect(() => {
-    const search = async () => {
-      const { data } = await axios.post("http://localhost:8080/app/clubsearch", { key: term });
-
-      setResults(data);
-    }
-
-    search();
-  }, [term]);
-
-  const queryResults = (event) => {
-    event.preventDefault();
-    window.history.pushState({}, '', '/search');
-
-    const navEvent = new PopStateEvent('popstate');
-    window.dispatchEvent(navEvent);
-  };
-
-  const populateNavLeft = (search, logoOnly) => {
-    const logoLink = props.user ? '/userdash' : '/';
+const Navbar = ({ search, logoOnly, user, onTermChange }) => {
+  const populateNavLeft = () => {
+    const logoLink = user ? '/userdash' : '/';
 
     if (logoOnly) {
       return (
@@ -54,18 +30,13 @@ const Navbar = (props) => {
           <Link className="navbar-brand ml-2" href={logoLink}>
             <img src="clubsc_mini.png" width="72px" height="40px" alt="" />
           </Link>
-          <form className="form-inline d-flex" onSubmit={queryResults}>
-            <SearchBar width='50vw' button={true} term={term} onTermChange={setTerm}/>
-            <Route path="/search">
-              <ResultsPage results={results}/>
-            </Route>
-          </form>
+          <SearchBar width='50vw' button={true} onTermChange={onTermChange} />
         </div>
       );
     }
   };
 
-  const populateNavRight = (user, logoOnly) => {
+  const populateNavRight = () => {
     if(logoOnly) { return; }
 
     if (!user){
@@ -94,8 +65,8 @@ const Navbar = (props) => {
 
   return (
     <nav className="navbar sticky-top navbar-expand navbar-light bg-light">
-      {populateNavLeft(props.search, props.logoOnly)}
-      {populateNavRight(props.user, props.logoOnly)}
+      {populateNavLeft()}
+      {populateNavRight()}
     </nav>
   );
 };

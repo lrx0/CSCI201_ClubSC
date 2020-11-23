@@ -4,8 +4,6 @@ import React from 'react';
 import Link from './Link';
 
 const SearchResult = (props) => {
-
-
   return (
     <div className="col-12 col-md-5 col-xl-3">
       <div className="card mb-3 mb-xl-4 mx-1 mx-xl-1">

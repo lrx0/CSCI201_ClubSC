@@ -3,12 +3,12 @@ import Faker from 'faker';
 import Post from '../components/Post';
 import ContainerView from '../components/ContainerView';
 
-const ClubPage = () => {
+const ClubPage = ({ onTermChange }) => {
   const name = "This is a Club";
   const description = "I'm baby unicorn fixie sriracha trust fund succulents vape four dollar toast selfies literally retro neutra meggings. Mlkshk blue bottle salvia man bun green juice cardigan, vice heirloom. Pickled occupy roof party, narwhal bespoke disrupt chillwave. Hot chicken venmo put a bird on it af pitchfork man braid vexillologist edison bulb vaporware pickled drinking vinegar. Mlkshk cold-pressed intelligentsia, cardigan locavore vegan tattooed slow-carb swag man bun. Dummy text? More like dummy thicc text, amirite?";
 
   return (
-    <ContainerView search={true} user={Faker.name.findName()}>
+    <ContainerView search={true} user={Faker.name.findName()} onTermChange={onTermChange}>
       <div className="container">
         <div className="d-flex flex-column justify-content-center align-items-center">
           <h1 className="mt-4">{name}</h1>

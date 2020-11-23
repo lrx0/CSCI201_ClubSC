@@ -5,11 +5,11 @@ import ContainerView from '../components/ContainerView';
 import ResultContainer from '../components/ResultContainer';
 import FollowedClub from '../components/FollowedClub';
 
-const UserPage = () => {
+const UserPage = ({ onTermChange }) => {
   const name = Faker.name.findName();
 
   return (
-    <ContainerView search={true} user={name}>
+    <ContainerView search={true} user={name} onTermChange={onTermChange}>
       <div className="container">
         <div className="d-flex flex-row justify-content-center">
           <h1 className="mt-4">{name}</h1>
