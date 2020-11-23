@@ -3,6 +3,7 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.Vector;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutionException;
 
@@ -26,8 +27,8 @@ public class ClubSearchController
     {
     	String key = ClubSearchRequest.getKey();
     	String[] keys = key.split(",");
-    	List<CompletableFuture<List<Club>>> list = new 
-    			ArrayList<CompletableFuture<List<Club>>>();
+    	Vector<CompletableFuture<List<Club>>> list = new 
+    			Vector<CompletableFuture<List<Club>>>();
     	int numTerms = keys.length;
     	for(int i = 0; i < numTerms; i++) {
     		CompletableFuture<List<Club>> future = service.getAllClubs(keys[i]);

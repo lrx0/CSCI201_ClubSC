@@ -29,29 +29,22 @@ public class StudentFeedService
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		Long id = ((UserDetailsImpl) auth.getPrincipal()).getId();
         List<Follow> followedClubs = fr.findByStudentid(id);
-        List <Follow> followedlinked = new LinkedList <Follow> ();
-        PriorityQueue<Integer> recentpost = new PriorityQueue<Integer>(); 
-        for(Follow f : followedClubs) 
-		{
-            Long c = f.clubid;
-            recentpost.add(c.intValue());
-            followedlinked.add(f);
-			fetchedAnnouncements.addAll(annrepo.findByclubid(c));
-			System.out.println(annrepo.findByclubid(c).size());
-		}
-		Collections.sort(fetchedAnnouncements, new Comparator<Announcement>() {
+        PriorityQueue<Announcement> recentpost = new PriorityQueue<Announcement>(new Comparator<Announcement>() {
 			public int compare(Announcement a1, Announcement a2) {
 				
 				return a1.getTimestamp().compareTo(a2.getTimestamp());
 			}
-		});
-		List <Announcement> timechecked = new ArrayList<Announcement> ();
-		int tc = 0;
-		long currtime = System.currentTimeMillis();
-		while (tc<fetchedAnnouncements.size() &&currtime - fetchedAnnouncements.get(tc).getTimestamp().getTime() < timeback)
+		}); 
+        for(Follow f : followedClubs) 
 		{
-			timechecked.add(fetchedAnnouncements.get(tc));
-			tc++;
+            Long c = f.clubid;
+            recentpost.addAll(annrepo.findByclubid(c));
+		}
+		List <Announcement> timechecked = new ArrayList<Announcement> ();
+		long currtime = System.currentTimeMillis();
+		while (currtime - recentpost.peek().getTimestamp().getTime() < timeback)
+		{
+			timechecked.add(recentpost.poll());
 		} 
 		return timechecked;
 	}
