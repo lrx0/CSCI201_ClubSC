@@ -47,7 +47,7 @@ public class StudentFeedService
 		long currtime = System.currentTimeMillis();
 		DateFormat df = new SimpleDateFormat("dd/MM/yy HH:mm:ss");
 		Date date = df.parse(recentpost.peek().getTimestamp());
-		while (currtime - date.getTime() < timeback)
+		while (!recentpost.isEmpty() && currtime - date.getTime() < timeback)
 		{
 			timechecked.add(recentpost.poll());
 		} 

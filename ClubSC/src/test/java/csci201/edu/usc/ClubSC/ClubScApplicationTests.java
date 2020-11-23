@@ -21,6 +21,8 @@ class ClubScApplicationTests {
 	private StudentFeedController feedcontroller;
 	@Autowired
 	private StudentFollowController followcontroller;
+	@Autowired
+	private ClubsFollowedController FollowedClubsController;
 
 	@Test
 	void contextLoads() {
@@ -30,6 +32,7 @@ class ClubScApplicationTests {
 		assertThat(searchcontroller).isNotNull();
 		assertThat(feedcontroller).isNotNull();
 		assertThat(followcontroller).isNotNull();
+		assertThat(FollowedClubsController).isNotNull();
 	}
 
 }
