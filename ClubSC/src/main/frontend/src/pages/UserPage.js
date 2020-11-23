@@ -17,15 +17,11 @@ const UserPage = ({ onTermChange, user, setUser, onClubSelect }) => {
   });
 
   useEffect(() => {
-    const search = async () => {
-      const { data } = await axios.get("http://localhost:8080/app/clubsfollowed",
-        { headers: authHeader() });
-
-      setFollowed(data);
-    }
-
-    search();
-  });
+    axios.get("http://localhost:8080/app/clubsfollowed",
+    { headers: authHeader() }).then(({ data }) => {
+      setFollowed(data)
+    });
+  }, [user]);
 
   const name = user.username;
 

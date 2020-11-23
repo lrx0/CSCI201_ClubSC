@@ -1,7 +1,6 @@
 import  '../stylesheets/master.css';
 import  '../stylesheets/SearchResult.css';
 import React from 'react';
-import Link from './Link';
 
 const SearchResult = ({ id, name, description, onClubSelect }) => {
   const onClick = (event) => {

@@ -99,6 +99,7 @@ const ClubFields = ({ username, email, password, description, setUsername, setEm
           onChange={setDescription}
         />
         {description ? null : <p className={errClasses}>Please enter a description.</p>}
+        {description.length > 255 ? <p className={errClasses}>Description is too long.</p> : null}
       </div>
     </React.Fragment>
   );
@@ -114,42 +115,25 @@ const SignupPage = ({ setUser, user }) => {
 
   useEffect(() => {
     if(user){
-      window.history.pushState({}, '', '/');
+      if(user.roles.includes('ROLE_STUDENT')){
+        window.history.pushState({}, '', `/userdash`);
+      } else{
+        window.history.pushState({}, '', `/clubdash`);
+      }
       const navEvent = new PopStateEvent('popstate');
       window.dispatchEvent(navEvent);
     }
-  });
+  }, [user]);
+
+  useEffect(() => {
+    setUsername('');
+    setEmail('');
+    setPassword('');
+    setDescription('');
+    setErrMsg('');
+  }, [role]);
 
   const handleSignup = (e) => {
-    const signup = async (user, email, pw, desc, r) => {
-      try {
-        const { message } = await axios.post('http://localhost:8080/api/auth/signup',
-          {
-            username: user,
-            email: email,
-            password: pw,
-            description: desc,
-            role: [r]
-          }
-        )
-
-        const { data } = await axios.post('http://localhost:8080/api/auth/signin',
-          {
-            username: user,
-            password: pw
-          }
-        )
-
-        localStorage.setItem("user", JSON.stringify(data));
-        setUser(JSON.parse(localStorage.getItem('user')));
-
-        return true;
-      } catch (error) {
-        setErrMsg(error.message);
-        return false;
-      }
-    }
-
     e.preventDefault();
 
     if(!username || username.length > 20){
@@ -161,20 +145,33 @@ const SignupPage = ({ setUser, user }) => {
     else if(password.length < 6 || password.length > 120 || !(/\d/.test(password))){
       setErrMsg("Please check your password");
     }
-    else if(role === "club" && !description){
+    else if(role === "club" && (!description || description.length > 255) ){
       setErrMsg("Please check your description");
     }
     else{
-      if(signup(username, email, password, description, role)){
-        if(role === "student"){
-          window.history.pushState({}, '', `/userdash`);
-        } else{
-          window.history.pushState({}, '', `/clubdash`);
+      axios.post('http://localhost:8080/api/auth/signup',
+        {
+          username: username,
+          email: email,
+          password: password,
+          description: description,
+          role: [role]
         }
-
-        const navEvent = new PopStateEvent('popstate');
-        window.dispatchEvent(navEvent);
-      }
+      ).then(() => {
+        axios.post('http://localhost:8080/api/auth/signin',
+          {
+            username: username,
+            password: password
+          }
+        ).then(({ data })=>{
+          localStorage.setItem("user", JSON.stringify(data));
+          setUser(JSON.parse(localStorage.getItem('user')));
+        }).catch((error) => {
+          alert(error.response.data.message);
+        })
+      }).catch((error) => {
+        setErrMsg(error.response.data.message);
+      })
     }
   };
 
@@ -240,7 +237,7 @@ const SignupPage = ({ setUser, user }) => {
                 <span className="hide-mobile">Already have an account?</span>
                 <span className="show-mobile">Sign In</span>
               </Link>
-              <button className="btn btn-primary ml-auto mr-1" type="Submit">Submit</button>
+              <button className="btn btn-primary ml-auto mr-1" type="submit">Submit</button>
             </div>
           </form>
         </div>

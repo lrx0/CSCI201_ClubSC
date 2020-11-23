@@ -33,28 +33,30 @@ const ClubDashboard = ({ user, setUser }) => {
     }
 
     getClubInfo();
-  }, []);
+  }, [user.id]);
 
   const makePost = async (e) => {
     e.preventDefault();
 
-    if(postText.length < 20) { return; }
+    if(postText.length < 20 || postText.length > 255) {
+      alert(`Post must have 20-255 characters.\nYou currently have ${postText.length} characters.`)
+      return;
+    }
 
     axios.post("http://localhost:8080/app/clubpost",
       {
         content: postText
       },
-      { headers: authHeader() });
+      { headers: authHeader() }).then(() => {
+        setPostText('');
+        axios.post("http://localhost:8080/app/clubpage",
+          {
+            key: user.id
+          }
+        ).then(({ data: {announcements} }) => {setAnnouncements(announcements)});
+      });
 
-    setPostText('');
 
-    const { data: {announcements} } = await axios.post("http://localhost:8080/app/clubpage",
-      {
-        key: user.id
-      }
-    );
-
-    setAnnouncements(announcements);
   }
 
   const renderedAnnouncements = announcements.map((a) => {
@@ -73,7 +75,7 @@ const ClubDashboard = ({ user, setUser }) => {
           <p>{description}</p>
         </div>
         <hr />
-        <Post club="Club Name" red={true}>
+        <Post club={name} red={true}>
           <form onSubmit={makePost}>
             <div className="d-flex flex-column justify-content-center align-items-fill">
               <InputArea placeholder="Make a new post" value={postText} onChange={setPostText} className="mb-0 mt-2"/>

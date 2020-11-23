@@ -1,7 +1,6 @@
 import  '../stylesheets/master.css';
 import  '../stylesheets/SearchResult.css';
-import React, { useState, useEffect } from 'react';
-import Link from './Link';
+import React from 'react';
 
 const FollowedClub = ({ name, id, onClubSelect }) => {
   const onClick = (event) => {

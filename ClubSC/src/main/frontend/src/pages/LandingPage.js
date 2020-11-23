@@ -8,7 +8,7 @@ const LandingPage = ({ onTermChange, user }) => {
     <ContainerView user={user}>
       <div className="container">
         <div className="row d-flex flex-row justify-content-center">
-          <img className="my-5" width="225px" height="150px" src="clubsc_big.png" />
+          <img className="my-5" width="225px" height="150px" src="clubsc_big.png" alt="ClubSC Logo"/>
         </div>
         <div className="row d-flex flex-column align-items-center">
           <div className="col-8">

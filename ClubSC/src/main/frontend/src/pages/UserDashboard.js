@@ -17,10 +17,14 @@ const UserDashboard = ({ onTermChange, user }) => {
 
   useEffect(() => {
     const search = async () => {
-      const { data } = await axios.get("http://localhost:8080/app/studentfeed",
-        { headers: authHeader() });
+      try {
+        const { data } = await axios.get("http://localhost:8080/app/studentfeed",
+          { headers: authHeader() });
 
-      setAnnouncements(data);
+        setAnnouncements(data);
+      } catch(error) {
+        console.log("No posts for this user.")
+      }
     }
 
     search();
