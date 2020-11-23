@@ -25,7 +25,6 @@ public class StudentFeedService
     public List <Announcement> fetchFeed()
 	{
 		long timeback = 600000000;
-		List <Announcement> fetchedAnnouncements = new ArrayList<Announcement> ();
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		Long id = ((UserDetailsImpl) auth.getPrincipal()).getId();
         List<Follow> followedClubs = fr.findByStudentid(id);
