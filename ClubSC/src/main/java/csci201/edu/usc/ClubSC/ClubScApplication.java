@@ -1,5 +1,8 @@
 package csci201.edu.usc.ClubSC;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.concurrent.Executor;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,7 +14,7 @@ import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 
 import csci201.edu.usc.ClubSC.domain.Role;
-import csci201.edu.usc.ClubSC.domain.RoleRepository;
+import csci201.edu.usc.ClubSC.domain.*;
 import csci201.edu.usc.ClubSC.domain.Club;
 import csci201.edu.usc.ClubSC.domain.ClubRepository;
 import csci201.edu.usc.ClubSC.domain.ERole;
@@ -24,6 +27,10 @@ public class ClubScApplication {
 	 private RoleRepository repository;
 	 @Autowired
 	 ClubRepository ClubRepository;
+	 @Autowired
+	 UserRepository UserRepository;
+	 @Autowired
+	 AnnouncementRepository AnnouncementRepository;
 
 	public static void main(String[] args) {
 		SpringApplication.run(ClubScApplication.class, args);
@@ -38,21 +45,34 @@ public class ClubScApplication {
     	  repository.save(studentRole);
     	  repository.save(clubRole);
 		  repository.save(adminRole);
-		  ClubRepository.save(new Club((long)100,"We are The Advanced Spacecraft Propulsion and Energy (ASPEN) Laboratory","ASPEN"));
-		  ClubRepository.save(new Club((long)101,"We are The AeroDesign Team of USC","ADT"));
-		  ClubRepository.save(new Club((long)102,"We are The USC Chapter of the American Academy of Environmental Engineers and Scientists","AAEES"));
-		  ClubRepository.save(new Club((long)103,"We are The American Society of Civil Engineers","ASCE"));
-		  ClubRepository.save(new Club((long)104,"We are The American Society of Mechanical Engineers","ASME"));
-		  ClubRepository.save(new Club((long)105,"We are USC’s Autonomous Underwater Vehicle Design Team","AUV"));
-		  ClubRepository.save(new Club((long)106,"We are  Center for AI in Societys Student Branch","CAIS++"));
-		  ClubRepository.save(new Club((long)107,"We are Cyber Security and Forensics Organization","CybOrg"));
-		  ClubRepository.save(new Club((long)108,"We are Girls in Tech","GIT"));
-		  ClubRepository.save(new Club((long)109,"We are LavaLab","Lava"));
-		  ClubRepository.save(new Club((long)110,"We are SparkSc","SparkSC"));
-		   /* 
-		    (109,'We are LavaLab','LAVA'),
-		    (110,'We are SparkSc','SparkSC');
-		  ClubRepository.save(new Club())*/
+		  ClubRepository.save(new Club((long)1,"ASPEN","We are The Advanced Spacecraft Propulsion and Energy (ASPEN) Laboratory"));
+		  ClubRepository.save(new Club((long)2,"ADT","We are The AeroDesign Team of USC"));
+		  ClubRepository.save(new Club((long)3,"AAEES","We are The USC Chapter of the American Academy of Environmental Engineers and Scientists"));
+		  ClubRepository.save(new Club((long)4,"ASCE","We are The American Society of Civil Engineers"));
+		  ClubRepository.save(new Club((long)5,"ASME","We are The American Society of Mechanical Engineers"));
+		  ClubRepository.save(new Club((long)6,"AUV","We are USC’s Autonomous Underwater Vehicle Design Team"));
+		  ClubRepository.save(new Club((long)7,"CAIS++","We are  Center for AI in Societys Student Branch"));
+		  ClubRepository.save(new Club((long)8,"CybOrg","We are Cyber Security and Forensics Organization"));
+		  ClubRepository.save(new Club((long)9,"GIT","We are Girls in Tech"));
+		  ClubRepository.save(new Club((long)10,"Lava","We are LavaLab"));
+		  ClubRepository.save(new Club((long)11,"SparkSC","We are SparkSc"));
+		  UserRepository.save(new User("ASPEN","ASPEN@usc.edu","ASPEN","We are The Advanced Spacecraft Propulsion and Energy (ASPEN) Laboratory"));
+		  UserRepository.save(new User("ADT","ADT@usc.edu","ADT","We are The AeroDesign Team of USC"));
+		  UserRepository.save(new User("AAEES","AAEES@usc.edu","AAEES","We are The USC Chapter of the American Academy of Environmental Engineers and Scientists"));
+		  UserRepository.save(new User("ASCE","ASCE@usc.edu","ASCE","We are The American Society of Civil Engineers"));
+		  UserRepository.save(new User("ASME","ASME@usc.edu","ASME","We are The American Society of Mechanical Engineers"));
+		  UserRepository.save(new User("AUV","AUV@usc.edu","AUV","We are USC’s Autonomous Underwater Vehicle Design Team"));
+		  UserRepository.save(new User("CAIS++","CAIS@usc.edu","CAIS++","We are  Center for AI in Societys Student Branch"));
+		  UserRepository.save(new User("CybOrg","CybOrg@usc.edu","CybOrg","We are Cyber Security and Forensics Organization"));
+		  UserRepository.save(new User("GIT","GIT@usc.edu","GIT","We are Girls in Tech"));
+		  UserRepository.save(new User("Lava","Lava@usc.edu","Lava","We are LavaLab"));
+		  UserRepository.save(new User("SparkSC","SparkSC@usc.edu","SparkSC","We are SparkSc"));
+		  DateFormat df = new SimpleDateFormat("dd/MM/yy HH:mm:ss");
+	        Date dateobj = new Date();
+	        String ts = df.format(dateobj);
+		  for(int i = 1;i<=11;i++) {
+			  AnnouncementRepository.save(new Announcement(i,"Welcome to our club",ts));
+		  }
 		  
       };
     }
