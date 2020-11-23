@@ -7,9 +7,9 @@ import javax.persistence.*;
 public class Announcement {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	private Long postid;
+	private long postid;
 	@Column(nullable = false, unique = false)
-	private Long clubid;
+	private long clubid;
 	@Column(nullable = false, unique = false)
 	private String body;
 	@Column(nullable = false, unique = false)
@@ -22,6 +22,7 @@ public class Announcement {
 
 
 	public Announcement(long clubid, String body, String timestamp2) {
+		//this.postid = (long) 1;
 		this.clubid = clubid;
 		this.body = body;
 		this.timestamp = timestamp2;
