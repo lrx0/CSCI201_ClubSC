@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import org.springframework.data.domain.Pageable;
 
@@ -16,6 +18,7 @@ import csci201.edu.usc.ClubSC.domain.AnnouncementRepository;
 import csci201.edu.usc.ClubSC.domain.Club;
 import csci201.edu.usc.ClubSC.domain.ClubRepository;
 import csci201.edu.usc.ClubSC.domain.ClubSearchRepository;
+import csci201.edu.usc.ClubSC.domain.User;
 
 @Service
 public class ClubPostService
@@ -24,10 +27,12 @@ public class ClubPostService
     AnnouncementRepository ar;
     @Autowired
     ClubRepository cr; 
-    public void post(Long clubid, String body)
+    public void post(String body)
     {
 		Timestamp ts = new Timestamp(System.currentTimeMillis());
-        Announcement a = new Announcement(clubid, body, ts);
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		Long id = ((UserDetailsImpl) auth.getPrincipal()).getId();
+        Announcement a = new Announcement(id, body, ts);
         ar.save(a);
     }
 }

@@ -21,6 +21,6 @@ public class ClubPostController
     @PostMapping("/clubpost")
     public void post( @Valid @RequestBody ClubPostRequest ClubPostRequest)
     {
-        service.post(ClubPostRequest.getKey(), ClubPostRequest.getContent());
+        service.post(ClubPostRequest.getContent());
     }
 }

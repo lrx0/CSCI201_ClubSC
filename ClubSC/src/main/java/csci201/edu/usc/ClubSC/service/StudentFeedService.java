@@ -9,6 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import org.springframework.data.domain.Pageable;
 
@@ -26,12 +28,13 @@ public class StudentFeedService
     FollowRepository fr;
     @Autowired
     AnnouncementRepository annrepo;
-    public List <Announcement> fetchFeed(Long studentid)
+    public List <Announcement> fetchFeed()
 	{
 		long timeback = 600000000;
 		List <Announcement> fetchedAnnouncements = new ArrayList<Announcement> ();
-        //iterate through all
-        List<Follow> followedClubs = fr.findByStudentid(studentid);
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		Long id = ((UserDetailsImpl) auth.getPrincipal()).getId();
+        List<Follow> followedClubs = fr.findByStudentid(id);
         for(Follow f : followedClubs) 
 		{
             Long c = f.clubid;

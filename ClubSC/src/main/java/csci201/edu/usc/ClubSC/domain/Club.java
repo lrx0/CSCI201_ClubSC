@@ -10,32 +10,21 @@ public class Club {
 	private Long clubid;
 	@Column(nullable = false, unique = true)
 	private String username;
-
 	@Column(nullable = false, unique = false)
 	private String description;
-
-
-	
-	@ManyToMany(mappedBy = "followedClubs")
-	private Set<Student> followerStudents;
 
 	public Club() {
 		
 	}
 	
-	public Club(Long club_id, String username) {
+	public Club(Long club_id, String username, String description) {
 		super();
 		this.clubid = club_id;
 		this.username = username;
+		this.description = description;
 	}
 
 
-	public Set<Student> getFollowerStudents() {
-		return followerStudents;
-	}
-	public void setFollowerStudents(Set<Student> followerStudents) {
-		this.followerStudents = followerStudents;
-	}
 	public Long getClub_id() {
 		return clubid;
 	}

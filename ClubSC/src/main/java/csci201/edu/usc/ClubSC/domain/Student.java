@@ -11,12 +11,7 @@ public class Student {
 	private Long student_id;
 	@Column(nullable = false, unique = true)
 	private String username;
-	
-	@ManyToMany
-	@JoinTable(name = "Follower", joinColumns = @JoinColumn(name = "student_id"), 
-		inverseJoinColumns = @JoinColumn(name = "club_id"))
-	private Set<Club> followedClubs;
-	
+		
 	public Student() {
 		
 	}
@@ -27,12 +22,6 @@ public class Student {
 		this.username = username;
 	}
 	
-	public Set<Club> getFollowedClubs() {
-		return followedClubs;
-	}
-	public void setFollowedClubs(Set<Club> followedClubs) {
-		this.followedClubs = followedClubs;
-	}
 	public Long getStudent_id() {
 		return student_id;
 	}

@@ -21,6 +21,6 @@ public class StudentFollowController
     @PostMapping("/studentfollow")
     public void followClub( @Valid @RequestBody StudentFollowRequest StudentFollowRequest)
     {
-        service.followClub(StudentFollowRequest.getName(), StudentFollowRequest.getClub());
+        service.followClub(StudentFollowRequest.getClub());
     }
 }

@@ -18,10 +18,10 @@ public class StudentFeedController
     @Autowired
     StudentFeedService service;
  
-    @PostMapping("/studentfeed")
-    public List<Announcement> fetchFeed( @Valid @RequestBody StudentFeedRequest StudentFeedRequest)
+    @GetMapping("/studentfeed")
+    public List<Announcement> fetchFeed()
     {
-        List<Announcement> list = service.fetchFeed(StudentFeedRequest.getKey());
+        List<Announcement> list = service.fetchFeed();
         
         return list;
     }

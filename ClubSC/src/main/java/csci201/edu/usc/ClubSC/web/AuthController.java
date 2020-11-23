@@ -113,7 +113,7 @@ public class AuthController {
 		user.setRoles(roles);
 		userRepository.save(user);
 		if(!user.isStudent) {
-			clubRepository.save(new Club(user.getId(), user.getUsername()));
+			clubRepository.save(new Club(user.getId(), user.getUsername(), user.getDescription()));
 		} else {
 			studentRepository.save(new Student(user.getId(), user.getUsername()));
 		}
